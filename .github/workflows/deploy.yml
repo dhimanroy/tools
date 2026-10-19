@@ -1,0 +1,94 @@
+name: Tools Hub Deployment & Autonomous Services
+
+on:
+  # Autonomous Heartbeat Cron: checks every 6 hours
+  # The Python Gatekeeper checks if UTC time >= next_scheduled_crawl (3 to 7 days apart).
+  # If not yet time, the runner exits in 2 seconds without hitting coupon servers.
+  schedule:
+    - cron: '0 */6 * * *'
+
+  # Manual on-demand trigger via GitHub Actions tab
+  workflow_dispatch:
+    inputs:
+      force:
+        description: 'Force immediate Great Clips crawl (bypasses 3-7 day schedule gatekeeper)'
+        required: false
+        type: boolean
+        default: false
+
+  # Trigger build & deployment whenever code is pushed to main
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: 'pages-deploy'
+  cancel-in-progress: false
+
+jobs:
+  service-and-deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install Crawler Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          if [ -f get-a-discounted-hair-cut/crawler/requirements.txt ]; then
+            pip install -r get-a-discounted-hair-cut/crawler/requirements.txt
+          fi
+
+      - name: Run Great Clips Schedule Gatekeeper & Scraper
+        id: gc_crawler
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ] && [ "${{ github.event.inputs.force }}" = "true" ]; then
+            echo "::notice::Executing forced crawl requested by user..."
+            python get-a-discounted-hair-cut/crawler/crawler.py --force
+          else
+            echo "::notice::Checking schedule gatekeeper (3-7 days interval)..."
+            python get-a-discounted-hair-cut/crawler/crawler.py --check
+          fi
+
+      - name: Commit & Push Updated Coupon Dataset
+        run: |
+          git config --local user.name "github-actions[bot]"
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          
+          # Stage updated coupon data if crawler produced changes
+          git add get-a-discounted-hair-cut/data/coupons.json get-a-discounted-hair-cut/data/schedule_state.json || true
+          
+          if git diff --staged --quiet; then
+            echo "No coupon changes detected to commit."
+          else
+            git commit -m "chore(auto): update Great Clips coupons & schedule next crawl [skip ci]"
+            git push origin main
+          fi
+
+      - name: Setup GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload Pages Artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: '.'
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

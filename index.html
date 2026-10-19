@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tools &amp; Utilities — Dhiman Roy</title>
+  <meta name="description" content="Personal collection of computational tools, developer utilities, and web applications.">
+  <meta name="theme-color" content="#0d1117">
+
+  <!-- Google Fonts: Inter & Outfit -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <div class="wrapper">
+    <!-- Header -->
+    <header class="site-header">
+      <div class="brand">
+        <span class="brand-user">dhimanroy.github.io</span>
+        <span class="brand-sep">/</span>
+        <span class="brand-repo">tools</span>
+      </div>
+      <div class="header-nav">
+        <a href="https://github.com/dhimanroy/tools" target="_blank" rel="noopener noreferrer" class="link-muted">GitHub ↗</a>
+        <button id="theme-toggle" class="theme-btn" aria-label="Toggle dark/light theme" title="Toggle theme">
+          <span id="theme-icon">🌙</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Intro -->
+    <section class="intro-section">
+      <h1 class="page-title">Tools &amp; Utilities</h1>
+      <p class="page-subtitle">A minimal personal directory of computational tools, web utilities, and micro-services hosted on GitHub Pages.</p>
+    </section>
+
+    <!-- Main Tools Grid -->
+    <main class="tools-grid">
+      <!-- fixBib -->
+      <article class="tool-card">
+        <div class="card-top">
+          <div class="card-title-group">
+            <h2 class="card-title">
+              <a href="https://dhimanroy.github.io/fixBib/" target="_blank" rel="noopener noreferrer">fixBib ↗</a>
+            </h2>
+            <span class="card-tag">Academic &bull; LaTeX</span>
+          </div>
+          <span class="status-badge status-live">Live</span>
+        </div>
+        <p class="card-desc">Verify and format BibTeX entries for academic and aerospace publications (AIAA, JFM, PoF). Automatically validates DOIs via CrossRef/Semantic Scholar, standardizes journal abbreviations, formats publication titles, and exports clean BibTeX 100% in-browser.</p>
+        <div class="card-meta">
+          <span class="card-tech"><a href="https://dhimanroy.github.io/fixBib/" target="_blank" rel="noopener noreferrer" class="link-muted">dhimanroy.github.io/fixBib</a> &bull; DOI Verification &bull; Zero Server</span>
+        </div>
+      </article>
+
+      <!-- CFD Flow Inspector -->
+      <article class="tool-card">
+        <div class="card-top">
+          <div class="card-title-group">
+            <h2 class="card-title">FlowData CFD Inspector</h2>
+            <span class="card-tag">Computational</span>
+          </div>
+          <span class="status-badge status-dev">In Development</span>
+        </div>
+        <p class="card-desc">Interactive aerodynamic diagnostics suite for inspecting planar velocity fields, boundary layer statistics, and wake recovery profiles directly from simulation datasets.</p>
+        <div class="card-meta">
+          <span class="card-tech">Python &bull; HDF5 &bull; WebGL</span>
+        </div>
+      </article>
+
+      <!-- JSON & Webhook Diagnostic Lab -->
+      <article class="tool-card">
+        <div class="card-top">
+          <div class="card-title-group">
+            <h2 class="card-title">JSON &amp; Payload Lab</h2>
+            <span class="card-tag">Developer</span>
+          </div>
+          <span class="status-badge status-planned">Planned</span>
+        </div>
+        <p class="card-desc">Client-side diagnostic workbench for JSONPath filtering, schema validation, diff comparison, and testing mock payloads without third-party server exposure.</p>
+        <div class="card-meta">
+          <span class="card-tech">Client-Side ES6 &bull; Privacy First</span>
+        </div>
+      </article>
+
+      <!-- Text & Regex Utilities -->
+      <article class="tool-card">
+        <div class="card-top">
+          <div class="card-title-group">
+            <h2 class="card-title">Regex &amp; String Lab</h2>
+            <span class="card-tag">Utilities</span>
+          </div>
+          <span class="status-badge status-planned">Planned</span>
+        </div>
+        <p class="card-desc">Zero-latency regular expression debugger, base64 / URL encodings, string formatters, and delimiter transformation workbench.</p>
+        <div class="card-meta">
+          <span class="card-tech">WebAssembly &bull; Offline First</span>
+        </div>
+      </article>
+
+      <!-- Add New Tool Placeholder -->
+      <article class="tool-card card-placeholder">
+        <div class="card-top">
+          <div class="card-title-group">
+            <h2 class="card-title">+ More Tools Coming Soon</h2>
+          </div>
+          <span class="status-badge status-queue">Queue</span>
+        </div>
+        <p class="card-desc">Additional personal utilities and automation scripts will be deployed here as standalone web micro-apps.</p>
+        <div class="card-meta">
+          <span class="card-tech">GitHub Pages &bull; Subdirectory Hosting</span>
+        </div>
+      </article>
+    </main>
+
+    <!-- Minimal Footer -->
+    <footer class="site-footer">
+      <span>&copy; 2026 Dhiman Roy</span>
+      <span class="footer-dot">&bull;</span>
+      <span>Hosted with GitHub Pages</span>
+    </footer>
+  </div>
+
+  <script src="./app.js"></script>
+</body>
+</html>
