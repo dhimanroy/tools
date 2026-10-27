@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-10-27T16:59:48Z",
+  "lastUpdated": "2026-10-27T17:55:40Z",
   "totalActive": 204,
   "coupons": [
     {
@@ -150,6 +150,16 @@
       "city": "Glendale",
       "expiration": "11/02/2026",
       "url": "https://offers.greatclips.com/fjUl0ir",
+      "source": "dealsfinders"
+    },
+    {
+      "code": "laz4wYU",
+      "price": "$5.00",
+      "location": "Arizona",
+      "state": "AZ",
+      "city": "",
+      "expiration": "Active",
+      "url": "https://offers.greatclips.com/laz4wYU",
       "source": "dealsfinders"
     },
     {
@@ -983,16 +993,6 @@
       "source": "dealsfinders"
     },
     {
-      "code": "laz4wYU",
-      "price": "$5.00",
-      "location": "Maryland",
-      "state": "MD",
-      "city": "",
-      "expiration": "Active",
-      "url": "https://offers.greatclips.com/laz4wYU",
-      "source": "dealsfinders"
-    },
-    {
       "code": "FDgoVv3",
       "price": "$9.99",
       "location": "Berkley Square - 28983 Woodward Ave in Berkley, MI",
@@ -1483,6 +1483,16 @@
       "source": "dealsfinders"
     },
     {
+      "code": "eDdrhGm",
+      "price": "$8.99",
+      "location": "Wichita Falls",
+      "state": "OK",
+      "city": "",
+      "expiration": "11/06/2026",
+      "url": "https://offers.greatclips.com/eDdrhGm",
+      "source": "dealsfinders"
+    },
+    {
       "code": "5Y3xhBE",
       "price": "$11.99",
       "location": "Portland area  salons",
@@ -1710,16 +1720,6 @@
       "city": "Houston",
       "expiration": "11/08/2026",
       "url": "https://offers.greatclips.com/Y4krIsO",
-      "source": "dealsfinders"
-    },
-    {
-      "code": "eDdrhGm",
-      "price": "$8.99",
-      "location": "Wichita Falls",
-      "state": "TX",
-      "city": "",
-      "expiration": "11/06/2026",
-      "url": "https://offers.greatclips.com/eDdrhGm",
       "source": "dealsfinders"
     },
     {
