@@ -30,11 +30,10 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  service-and-deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+  build:
     runs-on: ubuntu-latest
+    outputs:
+      should_deploy: ${{ steps.check_deploy.outputs.should_deploy }}
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
@@ -89,27 +88,45 @@ jobs:
             git commit -m "chore(auto): update autonomous services dataset [skip ci]"
           fi
 
-          # Check if local main is ahead of remote origin/main
           if [ "$(git rev-parse HEAD)" != "$(git rev-parse origin/main)" ]; then
             echo "Pushing changes to origin/main..."
             git push origin main
-            echo "deployed=true" >> $GITHUB_OUTPUT
+            echo "pushed=true" >> $GITHUB_OUTPUT
           else
             echo "main is already up to date with origin/main."
-            echo "deployed=false" >> $GITHUB_OUTPUT
+            echo "pushed=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Check Deployment Need
+        id: check_deploy
+        run: |
+          if [ "${{ github.event_name }}" != "schedule" ] || [ "${{ steps.commit_main.outputs.pushed }}" = "true" ]; then
+            echo "should_deploy=true" >> $GITHUB_OUTPUT
+          else
+            echo "should_deploy=false" >> $GITHUB_OUTPUT
           fi
 
       - name: Setup GitHub Pages
-        if: github.event_name != 'schedule' || steps.commit_main.outputs.deployed == 'true'
+        if: steps.check_deploy.outputs.should_deploy == 'true'
         uses: actions/configure-pages@v5
 
       - name: Upload Pages Artifact
-        if: github.event_name != 'schedule' || steps.commit_main.outputs.deployed == 'true'
+        if: steps.check_deploy.outputs.should_deploy == 'true'
         uses: actions/upload-pages-artifact@v3
         with:
           path: '.'
 
+  deploy:
+    needs: build
+    if: needs.build.outputs.should_deploy == 'true'
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
       - name: Deploy to GitHub Pages
-        if: github.event_name != 'schedule' || steps.commit_main.outputs.deployed == 'true'
         id: deployment
         uses: actions/deploy-pages@v4
