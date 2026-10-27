@@ -147,12 +147,105 @@
   }
 
   /**
+   * Routing & URL Management (Clean Path /OH, Query ?state=OH, Hash #OH)
+   */
+  function getAppBasePath() {
+    const appSegment = "/get-a-discounted-hair-cut";
+    const path = window.location.pathname;
+    const idx = path.indexOf(appSegment);
+    if (idx !== -1) {
+      return path.substring(0, idx + appSegment.length) + "/";
+    }
+    const segments = path.replace(/\/+$/, "").split("/").filter(Boolean);
+    if (segments.length > 0 && STATE_NAMES[segments[segments.length - 1].toUpperCase()]) {
+      segments.pop();
+    }
+    return "/" + (segments.length ? segments.join("/") + "/" : "");
+  }
+
+  function getStateFromUrl() {
+    // 1. Check saved redirect subpath from 404.html (if redirected on GitHub Pages)
+    const savedSubpath = sessionStorage.getItem("ghp_redirect_path");
+    if (savedSubpath) {
+      sessionStorage.removeItem("ghp_redirect_path");
+      const clean = savedSubpath.replace(/[\/\?#].*$/, "").trim().toUpperCase();
+      if (clean && (STATE_NAMES[clean] || clean === "ALL")) {
+        return clean === "ALL" ? "all" : clean;
+      }
+    }
+
+    // 2. Check window.location.pathname (e.g. /tools/get-a-discounted-hair-cut/OH)
+    const path = window.location.pathname.replace(/\/+$/, "");
+    const segments = path.split("/").filter(Boolean);
+    if (segments.length > 0) {
+      const last = segments[segments.length - 1].toUpperCase();
+      if (STATE_NAMES[last] || last === "ALL") {
+        return last === "ALL" ? "all" : last;
+      }
+    }
+
+    // 3. Fallback: Query param (?state=OH or ?OH)
+    const urlParams = new URLSearchParams(window.location.search);
+    const qState = (urlParams.get("state") || "").toUpperCase();
+    if (qState && (STATE_NAMES[qState] || qState === "ALL")) {
+      return qState === "ALL" ? "all" : qState;
+    }
+    for (const key of urlParams.keys()) {
+      const upperKey = key.toUpperCase();
+      if (STATE_NAMES[upperKey] && !urlParams.get(key)) {
+        return upperKey;
+      }
+    }
+
+    // 4. Fallback: Hash (#OH or #/OH)
+    const rawHash = (window.location.hash || "").replace(/^[#\/]+/, "").trim().toUpperCase();
+    if (rawHash && (STATE_NAMES[rawHash] || rawHash === "ALL")) {
+      return rawHash === "ALL" ? "all" : rawHash;
+    }
+
+    return "all";
+  }
+
+  function updateUrlForState(stateCode, push = true) {
+    const basePath = getAppBasePath();
+    const isAll = !stateCode || stateCode === "all";
+    const targetUrl = isAll ? basePath : `${basePath}${stateCode.toUpperCase()}`;
+
+    updateTitleForState(stateCode);
+
+    if (window.location.pathname !== targetUrl) {
+      if (push) {
+        window.history.pushState({ state: stateCode }, "", targetUrl);
+      } else {
+        window.history.replaceState({ state: stateCode }, "", targetUrl);
+      }
+    }
+  }
+
+  function updateTitleForState(stateCode) {
+    if (!stateCode || stateCode === "all") {
+      document.title = "Great Clips Coupons | Verified Active Haircut Deals & Barcodes";
+    } else {
+      const name = STATE_NAMES[stateCode.toUpperCase()] || stateCode.toUpperCase();
+      document.title = `Great Clips Coupons in ${name} (${stateCode.toUpperCase()}) | Verified Deals`;
+    }
+  }
+
+  /**
    * Fetch Data from coupons.json and schedule_state.json
    */
   async function loadData() {
     try {
-      // 1. Fetch coupons.json (using relative path so it works in any subpath or domain)
-      const res = await fetch("./data/coupons.json", { cache: "no-store" });
+      // Resolve initial state from clean URL path / query / hash before data load
+      const initialUrlState = getStateFromUrl();
+      if (initialUrlState && initialUrlState !== "all") {
+        activeStateFilter = initialUrlState;
+        updateUrlForState(initialUrlState, false);
+      }
+
+      const dataBasePath = getAppBasePath();
+      // 1. Fetch coupons.json
+      const res = await fetch(`${dataBasePath}data/coupons.json`, { cache: "no-store" });
       if (!res.ok) throw new Error(`HTTP error ${res.status}`);
       const data = await res.json();
 
@@ -162,7 +255,7 @@
 
       // 2. Fetch schedule_state.json for next automated crawl info
       try {
-        const stateRes = await fetch("./data/schedule_state.json", { cache: "no-store" });
+        const stateRes = await fetch(`${dataBasePath}data/schedule_state.json`, { cache: "no-store" });
         if (stateRes.ok) {
           scheduleState = await stateRes.json();
         }
@@ -254,13 +347,26 @@
       stateChipsContainer.appendChild(btn);
     }
 
+    // If activeStateFilter has 0 coupons, ensure option exists so dropdown displays it
+    if (activeStateFilter !== "all" && !stateCounts[activeStateFilter] && STATE_NAMES[activeStateFilter]) {
+      const opt = document.createElement("option");
+      opt.value = activeStateFilter;
+      opt.textContent = `${STATE_NAMES[activeStateFilter]} (${activeStateFilter}) - 0`;
+      stateSelect.appendChild(opt);
+    }
+
+    stateSelect.value = activeStateFilter;
+    updateActiveChipUI(activeStateFilter);
+
     // Bind Chip click handlers
     stateChipsContainer.querySelectorAll(".state-chip").forEach((btn) => {
       btn.addEventListener("click", () => {
         const targetState = btn.dataset.state;
+        if (targetState === activeStateFilter) return;
         activeStateFilter = targetState;
         stateSelect.value = targetState;
         updateActiveChipUI(targetState);
+        updateUrlForState(targetState, true);
         applyFiltersAndSort();
       });
     });
@@ -510,6 +616,7 @@
     stateSelect.addEventListener("change", (e) => {
       activeStateFilter = e.target.value;
       updateActiveChipUI(activeStateFilter);
+      updateUrlForState(activeStateFilter, true);
       applyFiltersAndSort();
     });
 
@@ -517,6 +624,18 @@
     sortSelect.addEventListener("change", (e) => {
       activeSortOption = e.target.value;
       applyFiltersAndSort();
+    });
+
+    // Browser History navigation (Back / Forward)
+    window.addEventListener("popstate", () => {
+      const popState = getStateFromUrl();
+      if (popState !== activeStateFilter) {
+        activeStateFilter = popState;
+        stateSelect.value = popState;
+        updateActiveChipUI(popState);
+        updateTitleForState(popState);
+        applyFiltersAndSort();
+      }
     });
   }
 

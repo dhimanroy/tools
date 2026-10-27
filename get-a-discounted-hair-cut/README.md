@@ -19,7 +19,7 @@ Autonomous Great Clips haircut coupon scraper and live validator designed for ze
   - Responsive layout for desktop and mobile.
   - Instant reactive search by state (e.g. `OH`, `TX`, `CA`, `Ohio`), city, or coupon code.
   - State filter dropdown with coupon count badges.
-  - One-click **"Redeem Offer"** (opens official Great Clips barcode page) & **"Copy Code"**.
+  - One-click **"Redeem Offer"** (opens official Great Clips page to receive code via email) & **"Copy Code"**.
   - Dark / Light mode toggle with saved preference.
 
 ---

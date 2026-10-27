@@ -5,6 +5,18 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <!-- GitHub Pages Clean Path SPA Restoration -->
+  <script>
+    (function () {
+      var redirectUrl = sessionStorage.getItem('ghp_redirect_full_url');
+      if (redirectUrl) {
+        sessionStorage.removeItem('ghp_redirect_full_url');
+        var cleanUrl = redirectUrl.replace(/\/+$/, '');
+        window.history.replaceState(null, null, cleanUrl);
+      }
+    })();
+  </script>
+
   <!-- Primary SEO Meta Tags -->
   <title>Great Clips Coupons | Verified Active Haircut Deals &amp; Barcodes</title>
   <meta name="title" content="Great Clips Coupons | Verified Active Haircut Deals &amp; Barcodes">
@@ -263,14 +275,21 @@
           <div class="step-number">2</div>
           <div class="step-content">
             <h4>Click "Redeem Offer"</h4>
-            <p>Opens the official Great Clips coupon page on your smartphone browser right before paying.</p>
+            <p>You will be redirected to the official Great Clips promotion page for your selected deal.</p>
           </div>
         </div>
         <div class="step-card">
           <div class="step-number">3</div>
           <div class="step-content">
-            <h4>Show Barcode to Stylist</h4>
-            <p>Tap "Redeem Now" to display the green barcode and present your phone screen at checkout.</p>
+            <h4>Enter Your Email</h4>
+            <p>Enter your email address on the Great Clips page to receive your customized haircut discount code.</p>
+          </div>
+        </div>
+        <div class="step-card">
+          <div class="step-number">4</div>
+          <div class="step-content">
+            <h4>Show Code to Stylist</h4>
+            <p>Open the email from Great Clips and present your customized barcode or promo code at checkout.</p>
           </div>
         </div>
       </div>
