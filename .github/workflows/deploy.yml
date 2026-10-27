@@ -2,8 +2,6 @@ name: Tools Hub Deployment & Autonomous Services
 
 on:
   # Autonomous Heartbeat Cron: checks every 6 hours
-  # The Python Gatekeeper checks if UTC time >= next_scheduled_crawl (3 to 7 days apart).
-  # If not yet time, the runner exits in 2 seconds without hitting coupon servers.
   schedule:
     - cron: '0 */6 * * *'
 
@@ -16,9 +14,10 @@ on:
         type: boolean
         default: false
 
-  # Trigger build & deployment whenever code is pushed to main
+  # Trigger build & deployment whenever code is pushed to source or main
   push:
     branches:
+      - source
       - main
 
 permissions:
@@ -31,16 +30,30 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  service-and-deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+  build:
     runs-on: ubuntu-latest
+    outputs:
+      should_deploy: ${{ steps.check_deploy.outputs.should_deploy }}
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          ref: main
+
+      - name: Configure Git Identity
+        run: |
+          git config --local user.name "github-actions[bot]"
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Sync Source Branch into Main
+        if: github.event_name == 'push' && github.ref == 'refs/heads/source'
+        run: |
+          echo "Merging latest code from source branch into main..."
+          git fetch origin source:source
+          git merge --no-edit -X theirs source || {
+            git commit -m "chore(sync): merge source branch into main [skip ci]"
+          }
 
       - name: Set up Python 3.11
         uses: actions/setup-python@v5
@@ -55,7 +68,7 @@ jobs:
             pip install -r get-a-discounted-hair-cut/crawler/requirements.txt
           fi
 
-      - name: Run Great Clips Schedule Gatekeeper & Scraper
+      - name: Run Autonomous Services (Great Clips & Other Tools)
         id: gc_crawler
         run: |
           if [ "${{ github.event_name }}" = "workflow_dispatch" ] && [ "${{ github.event.inputs.force }}" = "true" ]; then
@@ -66,29 +79,54 @@ jobs:
             python get-a-discounted-hair-cut/crawler/crawler.py --check
           fi
 
-      - name: Commit & Push Updated Coupon Dataset
+      - name: Commit & Push Updates to Main
+        id: commit_main
         run: |
-          git config --local user.name "github-actions[bot]"
-          git config --local user.email "github-actions[bot]@users.noreply.github.com"
-          
-          # Stage updated coupon data if crawler produced changes
-          git add get-a-discounted-hair-cut/data/coupons.json get-a-discounted-hair-cut/data/schedule_state.json || true
-          
-          if git diff --staged --quiet; then
-            echo "No coupon changes detected to commit."
-          else
-            git commit -m "chore(auto): update Great Clips coupons & schedule next crawl [skip ci]"
+          git add -A
+          if ! git diff --staged --quiet; then
+            echo "Staged changes found. Committing dataset updates..."
+            git commit -m "chore(auto): update autonomous services dataset [skip ci]"
+          fi
+
+          if [ "$(git rev-parse HEAD)" != "$(git rev-parse origin/main)" ]; then
+            echo "Pushing changes to origin/main..."
             git push origin main
+            echo "pushed=true" >> $GITHUB_OUTPUT
+          else
+            echo "main is already up to date with origin/main."
+            echo "pushed=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Check Deployment Need
+        id: check_deploy
+        run: |
+          if [ "${{ github.event_name }}" != "schedule" ] || [ "${{ steps.commit_main.outputs.pushed }}" = "true" ]; then
+            echo "should_deploy=true" >> $GITHUB_OUTPUT
+          else
+            echo "should_deploy=false" >> $GITHUB_OUTPUT
           fi
 
       - name: Setup GitHub Pages
+        if: steps.check_deploy.outputs.should_deploy == 'true'
         uses: actions/configure-pages@v5
 
       - name: Upload Pages Artifact
+        if: steps.check_deploy.outputs.should_deploy == 'true'
         uses: actions/upload-pages-artifact@v3
         with:
           path: '.'
 
+  deploy:
+    needs: build
+    if: needs.build.outputs.should_deploy == 'true'
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
