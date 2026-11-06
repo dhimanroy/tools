@@ -244,10 +244,24 @@
       }
 
       const dataBasePath = getAppBasePath();
-      // 1. Fetch coupons.json
-      const res = await fetch(`${dataBasePath}data/coupons.json`, { cache: "no-store" });
-      if (!res.ok) throw new Error(`HTTP error ${res.status}`);
-      const data = await res.json();
+      const RAW_GITHUB_BASE = "https://raw.githubusercontent.com/dhimanroy/tools/main/get-a-discounted-hair-cut/";
+
+      // 1. Fetch coupons.json (prefer live GitHub raw content with timestamp to bypass CDN cache, fallback to local path)
+      let data = null;
+      try {
+        const liveRes = await fetch(`${RAW_GITHUB_BASE}data/coupons.json?t=${Date.now()}`, { cache: "no-store" });
+        if (liveRes.ok) {
+          data = await liveRes.json();
+        }
+      } catch (liveErr) {
+        console.warn("Could not fetch live coupons from GitHub, trying local fallback:", liveErr);
+      }
+
+      if (!data) {
+        const res = await fetch(`${dataBasePath}data/coupons.json`, { cache: "no-store" });
+        if (!res.ok) throw new Error(`HTTP error ${res.status}`);
+        data = await res.json();
+      }
 
       allCoupons = Array.isArray(data.coupons) ? data.coupons : [];
       metadata.lastUpdated = data.lastUpdated || null;
@@ -255,10 +269,18 @@
 
       // 2. Fetch schedule_state.json for next automated crawl info
       try {
-        const stateRes = await fetch(`${dataBasePath}data/schedule_state.json`, { cache: "no-store" });
-        if (stateRes.ok) {
-          scheduleState = await stateRes.json();
+        let stateData = null;
+        try {
+          const liveStateRes = await fetch(`${RAW_GITHUB_BASE}data/schedule_state.json?t=${Date.now()}`, { cache: "no-store" });
+          if (liveStateRes.ok) stateData = await liveStateRes.json();
+        } catch {
+          // ignore live state fetch failure
         }
+        if (!stateData) {
+          const stateRes = await fetch(`${dataBasePath}data/schedule_state.json`, { cache: "no-store" });
+          if (stateRes.ok) stateData = await stateRes.json();
+        }
+        if (stateData) scheduleState = stateData;
       } catch {
         // Non-critical if schedule_state.json is missing
       }
