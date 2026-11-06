@@ -1,0 +1,61 @@
+name: Deploy Static Tools Hub
+
+on:
+  # Trigger deployment ONLY when code is pushed to source branch
+  push:
+    branches:
+      - source
+
+  # Manual on-demand deployment trigger
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: 'pages-deploy'
+  cancel-in-progress: false
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: main
+
+      - name: Configure Git Identity
+        run: |
+          git config --local user.name "github-actions[bot]"
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Sync Source Branch into Main
+        if: github.event_name == 'push' && github.ref == 'refs/heads/source'
+        run: |
+          echo "Merging latest source branch into main..."
+          git fetch origin source:source
+          git merge --no-edit -X theirs source || {
+            git commit -m "chore(sync): merge source branch into main [skip ci]"
+          }
+          if [ "$(git rev-parse HEAD)" != "$(git rev-parse origin/main)" ]; then
+            git push origin main
+          fi
+
+      - name: Setup GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload Pages Artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: '.'
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
