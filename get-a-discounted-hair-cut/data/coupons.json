@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-06T08:06:06Z",
+  "lastUpdated": "2026-11-06T09:16:00Z",
   "totalActive": 236,
   "coupons": [
     {
@@ -60,16 +60,6 @@
       "city": "Opelika",
       "expiration": "11/07/2026",
       "url": "https://offers.greatclips.com/tEwnQOf",
-      "source": "dealsfinders"
-    },
-    {
-      "code": "1toFx3P",
-      "price": "$5.00",
-      "location": "Arizona",
-      "state": "AZ",
-      "city": "",
-      "expiration": "Active",
-      "url": "https://offers.greatclips.com/1toFx3P",
       "source": "dealsfinders"
     },
     {
@@ -170,16 +160,6 @@
       "city": "San Ramon",
       "expiration": "11/20/2026",
       "url": "https://offers.greatclips.com/pHW0rhs",
-      "source": "dealsfinders"
-    },
-    {
-      "code": "wtXMVaZ",
-      "price": "$11.99",
-      "location": "Town and Country Shopping Center at 621 San Ramon Valley Blvd in Danville, CA",
-      "state": "CA",
-      "city": "Danville",
-      "expiration": "12/04/2026",
-      "url": "https://offers.greatclips.com/wtXMVaZ",
       "source": "dealsfinders"
     },
     {
@@ -873,6 +853,16 @@
       "source": "dealsfinders"
     },
     {
+      "code": "1toFx3P",
+      "price": "$5.00",
+      "location": "Louisiana",
+      "state": "LA",
+      "city": "",
+      "expiration": "Active",
+      "url": "https://offers.greatclips.com/1toFx3P",
+      "source": "dealsfinders"
+    },
+    {
       "code": "D2bkuiL",
       "price": "$6.99",
       "location": "RK Center - Fall River at 4171 North Main Street in Fall River, MA",
@@ -1553,23 +1543,23 @@
       "source": "dealsfinders"
     },
     {
-      "code": "iLZ9RvN",
-      "price": "$9.99",
-      "location": "Hunters Ridge Plaza at 330 S Hamilton Rd in Gahanna, OH",
+      "code": "rRpGcAp",
+      "price": "$7.00",
+      "location": "Parma Heights at 6512 York Rd in Parma Heights, OH",
       "state": "OH",
-      "city": "Gahanna",
+      "city": "Parma Heights",
       "expiration": "11/20/2026",
-      "url": "https://offers.greatclips.com/iLZ9RvN",
+      "url": "https://offers.greatclips.com/rRpGcAp",
       "source": "dealsfinders"
     },
     {
-      "code": "u79tstG",
-      "price": "$9.99",
-      "location": "Kyber Run Shopping Center at 838 W Coshocton St in Johnstown, OH",
+      "code": "wOOyqdU",
+      "price": "$7.00",
+      "location": "Brook Park at 15575 Snow Rd in Brook Park, OH",
       "state": "OH",
-      "city": "Johnstown",
+      "city": "Brook Park",
       "expiration": "11/20/2026",
-      "url": "https://offers.greatclips.com/u79tstG",
+      "url": "https://offers.greatclips.com/wOOyqdU",
       "source": "dealsfinders"
     },
     {
@@ -2360,6 +2350,16 @@
       "city": "",
       "expiration": "11/06/2026",
       "url": "https://offers.greatclips.com/PXUHJrP",
+      "source": "dealsfinders"
+    },
+    {
+      "code": "sJNYxNW",
+      "price": "$10.99",
+      "location": "Cheyenne",
+      "state": "WY",
+      "city": "",
+      "expiration": "11/06/2026",
+      "url": "https://offers.greatclips.com/sJNYxNW",
       "source": "dealsfinders"
     }
   ]
