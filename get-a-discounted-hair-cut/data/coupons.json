@@ -1,6 +1,6 @@
 {
-  "lastUpdated": "2026-11-06T09:16:00Z",
-  "totalActive": 236,
+  "lastUpdated": "2026-11-10T14:34:59Z",
+  "totalActive": 195,
   "coupons": [
     {
       "code": "3aREILq",
@@ -10,16 +10,6 @@
       "city": "Auburn",
       "expiration": "12/07/2026",
       "url": "https://offers.greatclips.com/3aREILq",
-      "source": "dealsfinders"
-    },
-    {
-      "code": "7yvVN8v",
-      "price": "$5.00",
-      "location": "Auburn Corner Village at 819 E Glen Ave in Auburn, AL",
-      "state": "AL",
-      "city": "Auburn",
-      "expiration": "11/07/2026",
-      "url": "https://offers.greatclips.com/7yvVN8v",
       "source": "dealsfinders"
     },
     {
@@ -53,13 +43,13 @@
       "source": "dealsfinders"
     },
     {
-      "code": "tEwnQOf",
-      "price": "$5.00",
-      "location": "Tiger Town at 2484 Enterprise Dr in Opelika, AL",
+      "code": "mAUQBL0",
+      "price": "$9.99",
+      "location": "Clanton Walmart at 1308 Woodfin Ln in Clanton, AL",
       "state": "AL",
-      "city": "Opelika",
-      "expiration": "11/07/2026",
-      "url": "https://offers.greatclips.com/tEwnQOf",
+      "city": "Clanton",
+      "expiration": "11/28/2026",
+      "url": "https://offers.greatclips.com/mAUQBL0",
       "source": "dealsfinders"
     },
     {
@@ -83,14 +73,24 @@
       "source": "dealsfinders"
     },
     {
-      "code": "7kejgAh",
-      "price": "$15.99",
-      "location": "Camden Park at 2075 Camden Ave in San Jose, CA",
+      "code": "6NFXM57",
+      "price": "$14.99",
+      "location": "Hollister Farms at 1210 East Park Street in Hollister, CA",
       "state": "CA",
-      "city": "San Jose",
-      "expiration": "11/07/2026",
-      "url": "https://offers.greatclips.com/7kejgAh",
-      "source": "greatclipscoupons"
+      "city": "Hollister",
+      "expiration": "11/16/2026",
+      "url": "https://offers.greatclips.com/6NFXM57",
+      "source": "dealsfinders"
+    },
+    {
+      "code": "BSbs0IK",
+      "price": "$17.99",
+      "location": "Greater Los Angeles area  salons",
+      "state": "CA",
+      "city": "",
+      "expiration": "11/20/2026",
+      "url": "https://offers.greatclips.com/BSbs0IK",
+      "source": "dealsfinders"
     },
     {
       "code": "L6IZYPN",
@@ -103,16 +103,6 @@
       "source": "dealsfinders"
     },
     {
-      "code": "MFyPktz",
-      "price": "$11.99",
-      "location": "Muir Station - 542 Center Ave in Martinez, CA",
-      "state": "CA",
-      "city": "Martinez",
-      "expiration": "11/20/2026",
-      "url": "https://offers.greatclips.com/MFyPktz",
-      "source": "dealsfinders"
-    },
-    {
       "code": "N4LawCo",
       "price": "$11.99",
       "location": "Palm Springs area  salons",
@@ -120,6 +110,16 @@
       "city": "",
       "expiration": "11/20/2026",
       "url": "https://offers.greatclips.com/N4LawCo",
+      "source": "dealsfinders"
+    },
+    {
+      "code": "PywFnTc",
+      "price": "$17.99",
+      "location": "Whitney Ranch at 920 University Ave in Rocklin, CA",
+      "state": "CA",
+      "city": "Rocklin",
+      "expiration": "01/23/2027",
+      "url": "https://offers.greatclips.com/PywFnTc",
       "source": "dealsfinders"
     },
     {
@@ -143,16 +143,6 @@
       "source": "dealsfinders"
     },
     {
-      "code": "h9CNLBK",
-      "price": "$11.99",
-      "location": "Tassajara Crossing at 3478 Camino Tassajara Rd in Danville, CA",
-      "state": "CA",
-      "city": "Danville",
-      "expiration": "12/02/2026",
-      "url": "https://offers.greatclips.com/h9CNLBK",
-      "source": "dealsfinders"
-    },
-    {
       "code": "pHW0rhs",
       "price": "$11.99",
       "location": "Diablo Plaza - 2491 San Ramon Valley Blvd in San Ramon, CA",
@@ -160,16 +150,6 @@
       "city": "San Ramon",
       "expiration": "11/20/2026",
       "url": "https://offers.greatclips.com/pHW0rhs",
-      "source": "dealsfinders"
-    },
-    {
-      "code": "xFosynR",
-      "price": "$11.99",
-      "location": "Fresno",
-      "state": "CA",
-      "city": "",
-      "expiration": "11/13/2026",
-      "url": "https://offers.greatclips.com/xFosynR",
       "source": "dealsfinders"
     },
     {
@@ -223,13 +203,13 @@
       "source": "dealsfinders"
     },
     {
-      "code": "U5L2BYQ",
-      "price": "$17.99",
-      "location": "Broomfield Marketplace at 1100 US-287 in Broomfield, CO",
+      "code": "U1hTU3F",
+      "price": "$16.99",
+      "location": "Littleton Square at 40 W Littleton Blvd in Littleton, CO",
       "state": "CO",
-      "city": "Broomfield",
-      "expiration": "11/22/2026",
-      "url": "https://offers.greatclips.com/U5L2BYQ",
+      "city": "Littleton",
+      "expiration": "12/08/2026",
+      "url": "https://offers.greatclips.com/U1hTU3F",
       "source": "dealsfinders"
     },
     {
@@ -253,6 +233,16 @@
       "source": "dealsfinders"
     },
     {
+      "code": "h3EF7vM",
+      "price": "$17.99",
+      "location": "Firestone at 8110 Colorado Blvd in Firestone, CO",
+      "state": "CO",
+      "city": "Firestone",
+      "expiration": "12/08/2026",
+      "url": "https://offers.greatclips.com/h3EF7vM",
+      "source": "dealsfinders"
+    },
+    {
       "code": "kPNvvO3",
       "price": "$16.99",
       "location": "Parker & Arapahoe at 6790 S Cornerstar Way in Aurora, CO",
@@ -273,36 +263,6 @@
       "source": "dealsfinders"
     },
     {
-      "code": "uJ2tCEE",
-      "price": "$17.99",
-      "location": "Hilltop Village 2 at 4243 E 136th Ave in Thornton, CO",
-      "state": "CO",
-      "city": "Thornton",
-      "expiration": "11/22/2026",
-      "url": "https://offers.greatclips.com/uJ2tCEE",
-      "source": "dealsfinders"
-    },
-    {
-      "code": "OkG0AB3",
-      "price": "$12.99",
-      "location": "Hartford, North Haven",
-      "state": "CT",
-      "city": "",
-      "expiration": "11/06/2026",
-      "url": "https://offers.greatclips.com/OkG0AB3",
-      "source": "dealsfinders"
-    },
-    {
-      "code": "UaNcAfQ",
-      "price": "$12.99",
-      "location": "Bethel Big Y at 83 Stony Hill Rd in Bethel, CT",
-      "state": "CT",
-      "city": "Bethel",
-      "expiration": "11/06/2026",
-      "url": "https://offers.greatclips.com/UaNcAfQ",
-      "source": "dealsfinders"
-    },
-    {
       "code": "1TpERur",
       "price": "$13.99",
       "location": "Target Center at 3540 Harden Blvd in Lakeland, FL",
@@ -310,6 +270,16 @@
       "city": "Lakeland",
       "expiration": "11/27/2026",
       "url": "https://offers.greatclips.com/1TpERur",
+      "source": "dealsfinders"
+    },
+    {
+      "code": "1toFx3P",
+      "price": "$5.00",
+      "location": "Florida",
+      "state": "FL",
+      "city": "",
+      "expiration": "Active",
+      "url": "https://offers.greatclips.com/1toFx3P",
       "source": "dealsfinders"
     },
     {
@@ -353,6 +323,16 @@
       "source": "dealsfinders"
     },
     {
+      "code": "MkANMpW",
+      "price": "$14.99",
+      "location": "Celebration Pointe at 1709 Future Way in Celebration, FL",
+      "state": "FL",
+      "city": "Celebration",
+      "expiration": "11/29/2026",
+      "url": "https://offers.greatclips.com/MkANMpW",
+      "source": "dealsfinders"
+    },
+    {
       "code": "kJuHKBl",
       "price": "$13.99",
       "location": "High Glen at 2018 E County Rd 540A in Lakeland, FL",
@@ -370,16 +350,6 @@
       "city": "Palatka",
       "expiration": "12/07/2026",
       "url": "https://offers.greatclips.com/pptLLcL",
-      "source": "dealsfinders"
-    },
-    {
-      "code": "pqEi20Y",
-      "price": "$5.99",
-      "location": "Shoppes at Citrus Creek at 42676 Hwy 27 in Davenport, FL",
-      "state": "FL",
-      "city": "Davenport",
-      "expiration": "11/06/2026",
-      "url": "https://offers.greatclips.com/pqEi20Y",
       "source": "dealsfinders"
     },
     {
@@ -403,16 +373,6 @@
       "source": "dealsfinders"
     },
     {
-      "code": "2hs5UyK",
-      "price": "$12.99",
-      "location": "Whitemarsh Island Town Center at 4679 US Hwy 80 E in Savannah, GA",
-      "state": "GA",
-      "city": "Savannah",
-      "expiration": "12/07/2026",
-      "url": "https://offers.greatclips.com/2hs5UyK",
-      "source": "dealsfinders"
-    },
-    {
       "code": "95DSiS2",
       "price": "$12.99",
       "location": "Berwick Marketplace at 5730 Ogeechee Rd in Savannah, GA",
@@ -433,26 +393,6 @@
       "source": "dealsfinders"
     },
     {
-      "code": "AfqeuUh",
-      "price": "$12.99",
-      "location": "Dahlonega Village at 27 Maxwell Lane in Dahlonega, GA",
-      "state": "GA",
-      "city": "Dahlonega",
-      "expiration": "12/07/2026",
-      "url": "https://offers.greatclips.com/AfqeuUh",
-      "source": "dealsfinders"
-    },
-    {
-      "code": "BXLaDqv",
-      "price": "$12.99",
-      "location": "Newton Crossroads at 5340 Highway 20 S in Covington, GA",
-      "state": "GA",
-      "city": "Covington",
-      "expiration": "12/07/2026",
-      "url": "https://offers.greatclips.com/BXLaDqv",
-      "source": "dealsfinders"
-    },
-    {
       "code": "HHxB4xu",
       "price": "$12.99",
       "location": "Cornelia at 282 Furniture Plaza Dr in Cornelia, GA",
@@ -460,16 +400,6 @@
       "city": "Cornelia",
       "expiration": "12/07/2026",
       "url": "https://offers.greatclips.com/HHxB4xu",
-      "source": "dealsfinders"
-    },
-    {
-      "code": "QdA4TMG",
-      "price": "$12.99",
-      "location": "Millers Chapel at 2133 Highway 20 SE in Conyers, GA",
-      "state": "GA",
-      "city": "Conyers",
-      "expiration": "12/07/2026",
-      "url": "https://offers.greatclips.com/QdA4TMG",
       "source": "dealsfinders"
     },
     {
@@ -483,23 +413,63 @@
       "source": "dealsfinders"
     },
     {
-      "code": "SSDUdih",
+      "code": "c1lB8xH",
       "price": "$12.99",
-      "location": "Gornto Road at 1709 Gornto Rd in Valdosta, GA",
+      "location": "Shoppes at Houston Lake at 778 GA Hwy 96 in Bonaire, GA",
       "state": "GA",
-      "city": "Valdosta",
+      "city": "Bonaire",
       "expiration": "12/07/2026",
-      "url": "https://offers.greatclips.com/SSDUdih",
+      "url": "https://offers.greatclips.com/c1lB8xH",
       "source": "dealsfinders"
     },
     {
-      "code": "Tcw17x8",
+      "code": "dK49bRi",
       "price": "$12.99",
-      "location": "Thompson Bridge Commons at 3630 Thompson Bridge Rd in Gainesville, GA",
+      "location": "River Gate at 159 Tom Hill Sr Blvd in Macon, GA",
       "state": "GA",
-      "city": "Gainesville",
+      "city": "Macon",
+      "expiration": "11/21/2026",
+      "url": "https://offers.greatclips.com/dK49bRi",
+      "source": "dealsfinders"
+    },
+    {
+      "code": "fQ6lpQ7",
+      "price": "$12.99",
+      "location": "Bridge Pointe at 4335 Hartley Bridge Rd in Macon, GA",
+      "state": "GA",
+      "city": "Macon",
+      "expiration": "11/21/2026",
+      "url": "https://offers.greatclips.com/fQ6lpQ7",
+      "source": "dealsfinders"
+    },
+    {
+      "code": "r080EJD",
+      "price": "$12.99",
+      "location": "Houston Square at 211 Russell Pkwy in Warner Robins, GA",
+      "state": "GA",
+      "city": "Warner Robins",
       "expiration": "12/07/2026",
-      "url": "https://offers.greatclips.com/Tcw17x8",
+      "url": "https://offers.greatclips.com/r080EJD",
+      "source": "dealsfinders"
+    },
+    {
+      "code": "soTMxcd",
+      "price": "$12.99",
+      "location": "Centennial Village at 2300 Holcomb Bridge Rd in Roswell, GA",
+      "state": "GA",
+      "city": "Roswell",
+      "expiration": "12/07/2026",
+      "url": "https://offers.greatclips.com/soTMxcd",
+      "source": "dealsfinders"
+    },
+    {
+      "code": "vAlHq8y",
+      "price": "$12.99",
+      "location": "Plantation Village at 6255 Zebulon Rd in Macon, GA",
+      "state": "GA",
+      "city": "Macon",
+      "expiration": "11/21/2026",
+      "url": "https://offers.greatclips.com/vAlHq8y",
       "source": "dealsfinders"
     },
     {
@@ -533,16 +503,6 @@
       "source": "dealsfinders"
     },
     {
-      "code": "6ira6yQ",
-      "price": "$16.99",
-      "location": "Lewiston Center Mall at 1804 19th Ave in Lewiston, ID",
-      "state": "ID",
-      "city": "Lewiston",
-      "expiration": "11/06/2026",
-      "url": "https://offers.greatclips.com/6ira6yQ",
-      "source": "dealsfinders"
-    },
-    {
       "code": "P9eOmnn",
       "price": "$12.99",
       "location": "Idaho Falls",
@@ -553,13 +513,23 @@
       "source": "dealsfinders"
     },
     {
-      "code": "miFFXbt",
-      "price": "$16.99",
-      "location": "Palouse Mall at 2114 W Pullman Rd in Moscow, ID",
+      "code": "oy6JnJZ",
+      "price": "$15.99",
+      "location": "Hayden Target at 291 W Canfield Ave in Coeur D Alene, ID",
       "state": "ID",
-      "city": "Moscow",
-      "expiration": "11/06/2026",
-      "url": "https://offers.greatclips.com/miFFXbt",
+      "city": "Coeur D Alene",
+      "expiration": "11/21/2026",
+      "url": "https://offers.greatclips.com/oy6JnJZ",
+      "source": "dealsfinders"
+    },
+    {
+      "code": "rwvUlS9",
+      "price": "$15.99",
+      "location": "Post Falls Walmart at 3134 E Mullan Ave in Post Falls, ID",
+      "state": "ID",
+      "city": "Post Falls",
+      "expiration": "11/21/2026",
+      "url": "https://offers.greatclips.com/rwvUlS9",
       "source": "dealsfinders"
     },
     {
@@ -593,33 +563,13 @@
       "source": "dealsfinders"
     },
     {
-      "code": "DSfRRCM",
-      "price": "$12.99",
-      "location": "Round Lake Beach at 528 E Rollins Rd in Round Lake Beach, IL",
+      "code": "RM2NLLx",
+      "price": "$5.00",
+      "location": "Village Square Shopping Center at 719 W Route 22 in Lake Zurich, IL",
       "state": "IL",
-      "city": "Round Lake Beach",
-      "expiration": "11/22/2026",
-      "url": "https://offers.greatclips.com/DSfRRCM",
-      "source": "dealsfinders"
-    },
-    {
-      "code": "G1pUIkR",
-      "price": "$12.99",
-      "location": "Cary Square at 720 Northwest Hwy in Cary, IL",
-      "state": "IL",
-      "city": "Cary",
-      "expiration": "11/22/2026",
-      "url": "https://offers.greatclips.com/G1pUIkR",
-      "source": "dealsfinders"
-    },
-    {
-      "code": "Q01snaG",
-      "price": "$12.99",
-      "location": "Town and Country at 377 E Palatine Rd in Arlington Heights, IL",
-      "state": "IL",
-      "city": "Arlington Heights",
-      "expiration": "11/22/2026",
-      "url": "https://offers.greatclips.com/Q01snaG",
+      "city": "Lake Zurich",
+      "expiration": "Active",
+      "url": "https://offers.greatclips.com/RM2NLLx",
       "source": "dealsfinders"
     },
     {
@@ -630,16 +580,6 @@
       "city": "Grayslake",
       "expiration": "Active",
       "url": "https://offers.greatclips.com/Rjtk0T0",
-      "source": "dealsfinders"
-    },
-    {
-      "code": "T5C4T00",
-      "price": "$12.99",
-      "location": "Vernon Hills at 700 N Milwaukee Ave in Vernon Hills, IL",
-      "state": "IL",
-      "city": "Vernon Hills",
-      "expiration": "11/22/2026",
-      "url": "https://offers.greatclips.com/T5C4T00",
       "source": "dealsfinders"
     },
     {
@@ -673,6 +613,36 @@
       "source": "dealsfinders"
     },
     {
+      "code": "cHUPnLd",
+      "price": "$12.99",
+      "location": "Algonquin Town Center at 1542 E Algonquin Rd in Algonquin, IL",
+      "state": "IL",
+      "city": "Algonquin",
+      "expiration": "11/22/2026",
+      "url": "https://offers.greatclips.com/cHUPnLd",
+      "source": "dealsfinders"
+    },
+    {
+      "code": "sCEXAQ4",
+      "price": "$5.00",
+      "location": "Miller Center at 3822 Charles J Miller Rd in McHenry, IL",
+      "state": "IL",
+      "city": "McHenry",
+      "expiration": "Active",
+      "url": "https://offers.greatclips.com/sCEXAQ4",
+      "source": "dealsfinders"
+    },
+    {
+      "code": "uAWWV5K",
+      "price": "$5.00",
+      "location": "The Shops at Buffalo Grove at 1543 Deerfield Pkwy in Buffalo Grove, IL",
+      "state": "IL",
+      "city": "Buffalo Grove",
+      "expiration": "Active",
+      "url": "https://offers.greatclips.com/uAWWV5K",
+      "source": "dealsfinders"
+    },
+    {
       "code": "3ETzdqN",
       "price": "$12.99",
       "location": "Shoppes at Tanners Creek at 870 W Eads Pkwy in Lawrenceburg, IN",
@@ -680,16 +650,6 @@
       "city": "Lawrenceburg",
       "expiration": "12/07/2026",
       "url": "https://offers.greatclips.com/3ETzdqN",
-      "source": "dealsfinders"
-    },
-    {
-      "code": "AG1SjgF",
-      "price": "$12.99",
-      "location": "Old Capital Plaza at 413 Old Capital Plaza NW in Corydon, IN",
-      "state": "IN",
-      "city": "Corydon",
-      "expiration": "11/07/2026",
-      "url": "https://offers.greatclips.com/AG1SjgF",
       "source": "dealsfinders"
     },
     {
@@ -713,26 +673,6 @@
       "source": "dealsfinders"
     },
     {
-      "code": "JlX3trE",
-      "price": "$9.99",
-      "location": "Kroger Center at 1048 State Road 229 in Batesville, IN",
-      "state": "IN",
-      "city": "Batesville",
-      "expiration": "11/07/2026",
-      "url": "https://offers.greatclips.com/JlX3trE",
-      "source": "dealsfinders"
-    },
-    {
-      "code": "UWHfxcW",
-      "price": "$12.99",
-      "location": "River Pointe Mall at 451 East Clifty Dr in Madison, IN",
-      "state": "IN",
-      "city": "Madison",
-      "expiration": "11/07/2026",
-      "url": "https://offers.greatclips.com/UWHfxcW",
-      "source": "dealsfinders"
-    },
-    {
       "code": "dJwEvAo",
       "price": "$13.99",
       "location": "Brownsburg Meijer at 9202 E 56TH ST in Brownsburg, IN",
@@ -743,13 +683,13 @@
       "source": "dealsfinders"
     },
     {
-      "code": "tV2V3ac",
+      "code": "iXkxkSe",
       "price": "$12.99",
-      "location": "Hunters Station at 214 Hunter Station Rd in Sellersburg, IN",
+      "location": "River Pointe Mall at 451 East Clifty Dr in Madison, IN",
       "state": "IN",
-      "city": "Sellersburg",
-      "expiration": "11/07/2026",
-      "url": "https://offers.greatclips.com/tV2V3ac",
+      "city": "Madison",
+      "expiration": "12/07/2026",
+      "url": "https://offers.greatclips.com/iXkxkSe",
       "source": "dealsfinders"
     },
     {
@@ -853,43 +793,23 @@
       "source": "dealsfinders"
     },
     {
-      "code": "1toFx3P",
-      "price": "$5.00",
-      "location": "Louisiana",
-      "state": "LA",
-      "city": "",
-      "expiration": "Active",
-      "url": "https://offers.greatclips.com/1toFx3P",
-      "source": "dealsfinders"
-    },
-    {
-      "code": "D2bkuiL",
+      "code": "Nxb9iZu",
       "price": "$6.99",
       "location": "RK Center - Fall River at 4171 North Main Street in Fall River, MA",
       "state": "MA",
       "city": "Fall River",
-      "expiration": "11/07/2026",
-      "url": "https://offers.greatclips.com/D2bkuiL",
+      "expiration": "11/15/2026",
+      "url": "https://offers.greatclips.com/Nxb9iZu",
       "source": "dealsfinders"
     },
     {
-      "code": "atO1UOI",
-      "price": "$13.99",
-      "location": "Gloucester Crossing at 311 Gloucester Crossing Rd in Gloucester, MA",
-      "state": "MA",
-      "city": "Gloucester",
-      "expiration": "11/06/2026",
-      "url": "https://offers.greatclips.com/atO1UOI",
-      "source": "dealsfinders"
-    },
-    {
-      "code": "hPw1daf",
+      "code": "zmxpuyL",
       "price": "$6.99",
       "location": "Riverside Landing at 81 Coggeshall St in New Bedford, MA",
       "state": "MA",
       "city": "New Bedford",
-      "expiration": "11/07/2026",
-      "url": "https://offers.greatclips.com/hPw1daf",
+      "expiration": "11/15/2026",
+      "url": "https://offers.greatclips.com/zmxpuyL",
       "source": "dealsfinders"
     },
     {
@@ -913,26 +833,6 @@
       "source": "dealsfinders"
     },
     {
-      "code": "D2Bu7in",
-      "price": "$14.99",
-      "location": "Mount Airy Shopping Center at 311 E Ridgeville Blvd in Mount Airy, MD",
-      "state": "MD",
-      "city": "Mount Airy",
-      "expiration": "11/20/2026",
-      "url": "https://offers.greatclips.com/D2Bu7in",
-      "source": "dealsfinders"
-    },
-    {
-      "code": "F9BLgcL",
-      "price": "$14.99",
-      "location": "Quarry Lake at 2574 Quarry Lake Dr in Baltimore, MD",
-      "state": "MD",
-      "city": "Baltimore",
-      "expiration": "11/20/2026",
-      "url": "https://offers.greatclips.com/F9BLgcL",
-      "source": "dealsfinders"
-    },
-    {
       "code": "HdFnM5x",
       "price": "$12.99",
       "location": "Perry Hall Marketplace at 9645 B Belair Rd in Perry Hall, MD",
@@ -950,6 +850,66 @@
       "city": "Westminster",
       "expiration": "11/20/2026",
       "url": "https://offers.greatclips.com/MCGZKMA",
+      "source": "dealsfinders"
+    },
+    {
+      "code": "ZWpuQVI",
+      "price": "$12.99",
+      "location": "Honeygo Center at 5002 Honeygo Center Dr in Perry Hall, MD",
+      "state": "MD",
+      "city": "Perry Hall",
+      "expiration": "11/20/2026",
+      "url": "https://offers.greatclips.com/ZWpuQVI",
+      "source": "dealsfinders"
+    },
+    {
+      "code": "dwHYznP",
+      "price": "$12.99",
+      "location": "Lynch Manor Shopping Center at 7832 Wise Ave in Dundalk, MD",
+      "state": "MD",
+      "city": "Dundalk",
+      "expiration": "11/20/2026",
+      "url": "https://offers.greatclips.com/dwHYznP",
+      "source": "dealsfinders"
+    },
+    {
+      "code": "irXjhKS",
+      "price": "$12.99",
+      "location": "Burwood Village at 7073 Baltimore Annapolis Blvd in Glen Burnie, MD",
+      "state": "MD",
+      "city": "Glen Burnie",
+      "expiration": "11/20/2026",
+      "url": "https://offers.greatclips.com/irXjhKS",
+      "source": "dealsfinders"
+    },
+    {
+      "code": "joqJsJw",
+      "price": "$12.99",
+      "location": "Waterview Town Center at 129 Orville Rd in Essex, MD",
+      "state": "MD",
+      "city": "Essex",
+      "expiration": "11/20/2026",
+      "url": "https://offers.greatclips.com/joqJsJw",
+      "source": "dealsfinders"
+    },
+    {
+      "code": "tT3BtCv",
+      "price": "$12.99",
+      "location": "Southdale Shopping Center at 64 Mountain Rd in Glen Burnie, MD",
+      "state": "MD",
+      "city": "Glen Burnie",
+      "expiration": "11/20/2026",
+      "url": "https://offers.greatclips.com/tT3BtCv",
+      "source": "dealsfinders"
+    },
+    {
+      "code": "tz5ZBPE",
+      "price": "$12.99",
+      "location": "Centre at Glen Burnie at 6711 Ritchie Highway in Glen Burnie, MD",
+      "state": "MD",
+      "city": "Glen Burnie",
+      "expiration": "11/20/2026",
+      "url": "https://offers.greatclips.com/tz5ZBPE",
       "source": "dealsfinders"
     },
     {
@@ -1033,6 +993,16 @@
       "source": "dealsfinders"
     },
     {
+      "code": "vaenLry",
+      "price": "$9.99",
+      "location": "Northland at 5150 Northland Dr NE in Grand Rapids, MI",
+      "state": "MI",
+      "city": "Grand Rapids",
+      "expiration": "11/25/2026",
+      "url": "https://offers.greatclips.com/vaenLry",
+      "source": "dealsfinders"
+    },
+    {
       "code": "wHklWc0",
       "price": "$12.99",
       "location": "Detroit area  salons",
@@ -1053,16 +1023,6 @@
       "source": "dealsfinders"
     },
     {
-      "code": "S2nXRDN",
-      "price": "$10.00",
-      "location": "Clocktower Commons at 15190 Bluebird St NW in Andover, MN",
-      "state": "MN",
-      "city": "Andover",
-      "expiration": "11/07/2026",
-      "url": "https://offers.greatclips.com/S2nXRDN",
-      "source": "dealsfinders"
-    },
-    {
       "code": "gPmwede",
       "price": "$9.99",
       "location": "Fountains at Arbor Lakes at 11654 Fountains Dr N in Maple Grove, MN",
@@ -1070,16 +1030,6 @@
       "city": "Maple Grove",
       "expiration": "11/22/2026",
       "url": "https://offers.greatclips.com/gPmwede",
-      "source": "dealsfinders"
-    },
-    {
-      "code": "oMT72ua",
-      "price": "$10.00",
-      "location": "Park Place Promenade at 9672 Colorado Ln N in Brooklyn Park, MN",
-      "state": "MN",
-      "city": "Brooklyn Park",
-      "expiration": "11/07/2026",
-      "url": "https://offers.greatclips.com/oMT72ua",
       "source": "dealsfinders"
     },
     {
@@ -1103,26 +1053,6 @@
       "source": "dealsfinders"
     },
     {
-      "code": "3xId6vZ",
-      "price": "$10.99",
-      "location": "St. Louis Metro",
-      "state": "MO",
-      "city": "",
-      "expiration": "11/06/2026",
-      "url": "https://offers.greatclips.com/3xId6vZ",
-      "source": "dealsfinders"
-    },
-    {
-      "code": "Gta3eci",
-      "price": "$11.99",
-      "location": "Mid Rivers Crossing at 6136 Mid Rivers Mall Dr in St",
-      "state": "MO",
-      "city": "",
-      "expiration": "11/06/2026",
-      "url": "https://offers.greatclips.com/Gta3eci",
-      "source": "dealsfinders"
-    },
-    {
       "code": "OLe1VGi",
       "price": "$12.99",
       "location": "Shoppes at North Village at 5107 N Belt Hwy in Saint Joseph, MO",
@@ -1130,46 +1060,6 @@
       "city": "Saint Joseph",
       "expiration": "11/26/2026",
       "url": "https://offers.greatclips.com/OLe1VGi",
-      "source": "dealsfinders"
-    },
-    {
-      "code": "bvez0ZU",
-      "price": "$11.99",
-      "location": "Fountainview Plaza at 2651 Muegge Rd in St Charles, MO",
-      "state": "MO",
-      "city": "St Charles",
-      "expiration": "11/06/2026",
-      "url": "https://offers.greatclips.com/bvez0ZU",
-      "source": "dealsfinders"
-    },
-    {
-      "code": "eByaZUc",
-      "price": "$11.99",
-      "location": "St",
-      "state": "MO",
-      "city": "",
-      "expiration": "11/06/2026",
-      "url": "https://offers.greatclips.com/eByaZUc",
-      "source": "dealsfinders"
-    },
-    {
-      "code": "my9FV31",
-      "price": "$10.99",
-      "location": "Desloge at 1137 N Desloge Dr in Desloge, MO",
-      "state": "MO",
-      "city": "Desloge",
-      "expiration": "11/06/2026",
-      "url": "https://offers.greatclips.com/my9FV31",
-      "source": "dealsfinders"
-    },
-    {
-      "code": "w35OEzB",
-      "price": "$11.99",
-      "location": "The Plaza at Sunset Hills at 10718 Sunset Hills Plaza in Sunset Hills, MO",
-      "state": "MO",
-      "city": "Sunset Hills",
-      "expiration": "11/06/2026",
-      "url": "https://offers.greatclips.com/w35OEzB",
       "source": "dealsfinders"
     },
     {
@@ -1233,16 +1123,6 @@
       "source": "dealsfinders"
     },
     {
-      "code": "H0gF9mu",
-      "price": "$7.99",
-      "location": "Enka-Candler Ingles at 1572 Sand Hill Rd in Candler, NC",
-      "state": "NC",
-      "city": "Candler",
-      "expiration": "11/08/2026",
-      "url": "https://offers.greatclips.com/H0gF9mu",
-      "source": "dealsfinders"
-    },
-    {
       "code": "HehuM1n",
       "price": "$5.00",
       "location": "Belmont Town Center at 915 South Point Rd in Belmont, NC",
@@ -1260,16 +1140,6 @@
       "city": "Raleigh",
       "expiration": "11/13/2026",
       "url": "https://offers.greatclips.com/JeJNAtm",
-      "source": "dealsfinders"
-    },
-    {
-      "code": "Qa3nxW6",
-      "price": "$13.99",
-      "location": "Eastfield Town Center Crossing at 260 St Mark Ave in Selma, NC",
-      "state": "NC",
-      "city": "Selma",
-      "expiration": "11/06/2026",
-      "url": "https://offers.greatclips.com/Qa3nxW6",
       "source": "dealsfinders"
     },
     {
@@ -1323,13 +1193,13 @@
       "source": "dealsfinders"
     },
     {
-      "code": "lSNd2vP",
-      "price": "$18.99",
-      "location": "Peterborough area  salons",
-      "state": "NH",
-      "city": "",
-      "expiration": "11/06/2026",
-      "url": "https://offers.greatclips.com/lSNd2vP",
+      "code": "DtPdHRX",
+      "price": "$14.99",
+      "location": "Boro Center at 424 Route 206 S in Hillsborough, NJ",
+      "state": "NJ",
+      "city": "Hillsborough",
+      "expiration": "11/27/2026",
+      "url": "https://offers.greatclips.com/DtPdHRX",
       "source": "dealsfinders"
     },
     {
@@ -1343,146 +1213,6 @@
       "source": "dealsfinders"
     },
     {
-      "code": "nzYhC8t",
-      "price": "$8.99",
-      "location": "Concordia Shopping Center at 1600 Perrineville Rd in Monroe Township, NJ",
-      "state": "NJ",
-      "city": "Monroe Township",
-      "expiration": "11/06/2026",
-      "url": "https://offers.greatclips.com/nzYhC8t",
-      "source": "dealsfinders"
-    },
-    {
-      "code": "5mr93aB",
-      "price": "$10.99",
-      "location": "Craig and Simmons at 3073 W Craig Rd in North Las Vegas, NV",
-      "state": "NV",
-      "city": "North Las Vegas",
-      "expiration": "11/09/2026",
-      "url": "https://offers.greatclips.com/5mr93aB",
-      "source": "dealsfinders"
-    },
-    {
-      "code": "Am9Gf0f",
-      "price": "$10.99",
-      "location": "Cheyenne Commons at 3101 N Rainbow Blvd in Las Vegas, NV",
-      "state": "NV",
-      "city": "Las Vegas",
-      "expiration": "11/09/2026",
-      "url": "https://offers.greatclips.com/Am9Gf0f",
-      "source": "dealsfinders"
-    },
-    {
-      "code": "DBhO7Ai",
-      "price": "$10.99",
-      "location": "Joshua Tree Plaza at 1018 Nevada Way in Boulder City, NV",
-      "state": "NV",
-      "city": "Boulder City",
-      "expiration": "11/09/2026",
-      "url": "https://offers.greatclips.com/DBhO7Ai",
-      "source": "dealsfinders"
-    },
-    {
-      "code": "G9pVOmU",
-      "price": "$10.99",
-      "location": "Fort Apache at 9440 W Russell Rd in Las Vegas, NV",
-      "state": "NV",
-      "city": "Las Vegas",
-      "expiration": "11/09/2026",
-      "url": "https://offers.greatclips.com/G9pVOmU",
-      "source": "dealsfinders"
-    },
-    {
-      "code": "HGyjWRC",
-      "price": "$10.99",
-      "location": "Pahrump Valley Junction at 280 State Hwy 160 in Pahrump, NV",
-      "state": "NV",
-      "city": "Pahrump",
-      "expiration": "11/09/2026",
-      "url": "https://offers.greatclips.com/HGyjWRC",
-      "source": "dealsfinders"
-    },
-    {
-      "code": "HYpqnGt",
-      "price": "$10.99",
-      "location": "Craig Marketplace at 7121 W Craig Rd in Las Vegas, NV",
-      "state": "NV",
-      "city": "Las Vegas",
-      "expiration": "11/09/2026",
-      "url": "https://offers.greatclips.com/HYpqnGt",
-      "source": "dealsfinders"
-    },
-    {
-      "code": "PWbV0ul",
-      "price": "$10.99",
-      "location": "Inspirada Marketplace at 2345 Via Inspirada in Henderson, NV",
-      "state": "NV",
-      "city": "Henderson",
-      "expiration": "11/09/2026",
-      "url": "https://offers.greatclips.com/PWbV0ul",
-      "source": "dealsfinders"
-    },
-    {
-      "code": "U1adz4U",
-      "price": "$10.99",
-      "location": "Park Central Plaza at 5960 Losee Rd in North Las Vegas, NV",
-      "state": "NV",
-      "city": "North Las Vegas",
-      "expiration": "11/09/2026",
-      "url": "https://offers.greatclips.com/U1adz4U",
-      "source": "dealsfinders"
-    },
-    {
-      "code": "Y3bfmFW",
-      "price": "$10.99",
-      "location": "Bermuda & Windmill Lane Plaza at 530 East Windmill Lane in Las Vegas, NV",
-      "state": "NV",
-      "city": "Las Vegas",
-      "expiration": "11/09/2026",
-      "url": "https://offers.greatclips.com/Y3bfmFW",
-      "source": "dealsfinders"
-    },
-    {
-      "code": "fJQaoTO",
-      "price": "$10.99",
-      "location": "Cadence at 815 E Lake Mead Pkwy in Henderson, NV",
-      "state": "NV",
-      "city": "Henderson",
-      "expiration": "11/09/2026",
-      "url": "https://offers.greatclips.com/fJQaoTO",
-      "source": "dealsfinders"
-    },
-    {
-      "code": "3O1JfUi",
-      "price": "$9.99",
-      "location": "Binghamton area  salons",
-      "state": "NY",
-      "city": "",
-      "expiration": "11/06/2026",
-      "url": "https://offers.greatclips.com/3O1JfUi",
-      "source": "dealsfinders"
-    },
-    {
-      "code": "Riu19BG",
-      "price": "$12.99",
-      "location": "Buffalo area  salons",
-      "state": "NY",
-      "city": "",
-      "expiration": "11/06/2026",
-      "url": "https://offers.greatclips.com/Riu19BG",
-      "source": "dealsfinders"
-    },
-    {
-      "code": "1F3FMK5",
-      "price": "$9.99",
-      "location": "North Bridge Plaza at 5764 Frantz Rd in Dublin, OH",
-      "state": "OH",
-      "city": "Dublin",
-      "expiration": "11/20/2026",
-      "url": "https://offers.greatclips.com/1F3FMK5",
-      "source": "dealsfinders"
-    },
-    {
       "code": "7DMazwG",
       "price": "$7.00",
       "location": "Boston Square II at 19760 W 130th St in Strongsville, OH",
@@ -1490,16 +1220,6 @@
       "city": "Strongsville",
       "expiration": "11/20/2026",
       "url": "https://offers.greatclips.com/7DMazwG",
-      "source": "dealsfinders"
-    },
-    {
-      "code": "8NcDVY8",
-      "price": "$9.99",
-      "location": "Vista Plaza at 1169 N Hamilton Rd in Gahanna, OH",
-      "state": "OH",
-      "city": "Gahanna",
-      "expiration": "11/20/2026",
-      "url": "https://offers.greatclips.com/8NcDVY8",
       "source": "dealsfinders"
     },
     {
@@ -1523,23 +1243,43 @@
       "source": "dealsfinders"
     },
     {
-      "code": "Ija6UVL",
+      "code": "HLSkYhS",
       "price": "$9.99",
-      "location": "Westerville Plaza at 109 Westerville Plaza in Westerville, OH",
+      "location": "Gateway Plaza at 1558 E Coshocton Ave in Mount Vernon, OH",
       "state": "OH",
-      "city": "Westerville",
+      "city": "Mount Vernon",
       "expiration": "11/20/2026",
-      "url": "https://offers.greatclips.com/Ija6UVL",
+      "url": "https://offers.greatclips.com/HLSkYhS",
       "source": "dealsfinders"
     },
     {
-      "code": "W3GXiy4",
-      "price": "$9.99",
-      "location": "Hamilton Quarters at 5968 North Hamilton Rd in Columbus, OH",
+      "code": "iM2JlvW",
+      "price": "$7.00",
+      "location": "Presidential Square at 813 Boardman Poland Rd in Boardman, OH",
       "state": "OH",
-      "city": "Columbus",
+      "city": "Boardman",
+      "expiration": "11/25/2026",
+      "url": "https://offers.greatclips.com/iM2JlvW",
+      "source": "dealsfinders"
+    },
+    {
+      "code": "lVdmAhK",
+      "price": "$9.99",
+      "location": "Coleman's Crossing at 720 Coleman's Crossing Blvd in Marysville, OH",
+      "state": "OH",
+      "city": "Marysville",
       "expiration": "11/20/2026",
-      "url": "https://offers.greatclips.com/W3GXiy4",
+      "url": "https://offers.greatclips.com/lVdmAhK",
+      "source": "dealsfinders"
+    },
+    {
+      "code": "qFhnKe7",
+      "price": "$7.00",
+      "location": "Southland Shopping Center at 6869 Pearl Rd in Middleburg Heights, OH",
+      "state": "OH",
+      "city": "Middleburg Heights",
+      "expiration": "11/20/2026",
+      "url": "https://offers.greatclips.com/qFhnKe7",
       "source": "dealsfinders"
     },
     {
@@ -1603,16 +1343,6 @@
       "source": "dealsfinders"
     },
     {
-      "code": "eDdrhGm",
-      "price": "$8.99",
-      "location": "Wichita Falls",
-      "state": "OK",
-      "city": "",
-      "expiration": "11/06/2026",
-      "url": "https://offers.greatclips.com/eDdrhGm",
-      "source": "dealsfinders"
-    },
-    {
       "code": "5Y3xhBE",
       "price": "$11.99",
       "location": "Portland area  salons",
@@ -1630,16 +1360,6 @@
       "city": "",
       "expiration": "11/13/2026",
       "url": "https://offers.greatclips.com/olfCHbk",
-      "source": "dealsfinders"
-    },
-    {
-      "code": "Cjp0Axh",
-      "price": "$13.99",
-      "location": "William Penn Plaza-Easton at 3047 William Penn Highway in Easton, PA",
-      "state": "PA",
-      "city": "Easton",
-      "expiration": "11/08/2026",
-      "url": "https://offers.greatclips.com/Cjp0Axh",
       "source": "dealsfinders"
     },
     {
@@ -1673,26 +1393,6 @@
       "source": "dealsfinders"
     },
     {
-      "code": "Ru272a1",
-      "price": "$5.00",
-      "location": "Pine Grove Square at 17 Pine Grove Sq in Grove City, PA",
-      "state": "PA",
-      "city": "Grove City",
-      "expiration": "11/06/2026",
-      "url": "https://offers.greatclips.com/Ru272a1",
-      "source": "dealsfinders"
-    },
-    {
-      "code": "SPCYQww",
-      "price": "$10.99",
-      "location": "Walnut Place at 4580 Browns Hill Rd in Pittsburgh, PA",
-      "state": "PA",
-      "city": "Pittsburgh",
-      "expiration": "12/08/2026",
-      "url": "https://offers.greatclips.com/SPCYQww",
-      "source": "dealsfinders"
-    },
-    {
       "code": "V9PokL8",
       "price": "$9.99",
       "location": "Shoppes at Wyndham - 930 S Richland Ave in York, PA",
@@ -1700,6 +1400,16 @@
       "city": "York",
       "expiration": "11/20/2026",
       "url": "https://offers.greatclips.com/V9PokL8",
+      "source": "dealsfinders"
+    },
+    {
+      "code": "WtIcxoy",
+      "price": "$14.99",
+      "location": "Sadsbury Commons at 328 Commons Dr in Parkesburg, PA",
+      "state": "PA",
+      "city": "Parkesburg",
+      "expiration": "11/20/2026",
+      "url": "https://offers.greatclips.com/WtIcxoy",
       "source": "dealsfinders"
     },
     {
@@ -1713,6 +1423,16 @@
       "source": "dealsfinders"
     },
     {
+      "code": "i4AN0d1",
+      "price": "$10.99",
+      "location": "Bethel Park Shopping Center at 5029 Library Rd in Bethel Park, PA",
+      "state": "PA",
+      "city": "Bethel Park",
+      "expiration": "12/08/2026",
+      "url": "https://offers.greatclips.com/i4AN0d1",
+      "source": "dealsfinders"
+    },
+    {
       "code": "lww2I4H",
       "price": "$9.99",
       "location": "Hampden Marketplace - 4530 Marketplace Way in Enola, PA",
@@ -1723,6 +1443,16 @@
       "source": "dealsfinders"
     },
     {
+      "code": "rYmeQqF",
+      "price": "$10.99",
+      "location": "Mt",
+      "state": "PA",
+      "city": "",
+      "expiration": "12/08/2026",
+      "url": "https://offers.greatclips.com/rYmeQqF",
+      "source": "dealsfinders"
+    },
+    {
       "code": "tM4Zi4q",
       "price": "$10.99",
       "location": "Shops at 51 at 560 Clairton Blvd in Pleasant Hills, PA",
@@ -1730,16 +1460,6 @@
       "city": "Pleasant Hills",
       "expiration": "12/08/2026",
       "url": "https://offers.greatclips.com/tM4Zi4q",
-      "source": "dealsfinders"
-    },
-    {
-      "code": "067ewKw",
-      "price": "$5.99",
-      "location": "Anderson Central at 633 Highway 28 Bypass in Anderson, SC",
-      "state": "SC",
-      "city": "Anderson",
-      "expiration": "11/08/2026",
-      "url": "https://offers.greatclips.com/067ewKw",
       "source": "dealsfinders"
     },
     {
@@ -1763,23 +1483,33 @@
       "source": "dealsfinders"
     },
     {
-      "code": "PGMGGnW",
-      "price": "$5.99",
-      "location": "Cherrydale Point at 3275 N Pleasantburg Dr in Greenville, SC",
+      "code": "AtexIQI",
+      "price": "$6.99",
+      "location": "River Falls Plaza at 2099 E Main St in Duncan, SC",
       "state": "SC",
-      "city": "Greenville",
-      "expiration": "11/08/2026",
-      "url": "https://offers.greatclips.com/PGMGGnW",
+      "city": "Duncan",
+      "expiration": "11/15/2026",
+      "url": "https://offers.greatclips.com/AtexIQI",
       "source": "dealsfinders"
     },
     {
-      "code": "UnnC9nB",
+      "code": "S4UF84l",
       "price": "$10.99",
-      "location": "Pelham 85 at 3612 Pelham Rd in Greenville, SC",
+      "location": "Clemson Bi Lo Center at 501 Old Greenville Hwy in Clemson, SC",
       "state": "SC",
-      "city": "Greenville",
+      "city": "Clemson",
       "expiration": "12/09/2026",
-      "url": "https://offers.greatclips.com/UnnC9nB",
+      "url": "https://offers.greatclips.com/S4UF84l",
+      "source": "dealsfinders"
+    },
+    {
+      "code": "TfKeZnF",
+      "price": "$6.99",
+      "location": "Anderson Central at 633 Highway 28 Bypass in Anderson, SC",
+      "state": "SC",
+      "city": "Anderson",
+      "expiration": "11/15/2026",
+      "url": "https://offers.greatclips.com/TfKeZnF",
       "source": "dealsfinders"
     },
     {
@@ -1803,13 +1533,13 @@
       "source": "dealsfinders"
     },
     {
-      "code": "lzDUsuJ",
-      "price": "$5.99",
-      "location": "Ashmore Bridge Publix at 1313 Fork Shoals Rd in Greenville, SC",
+      "code": "oCDIpKo",
+      "price": "$6.99",
+      "location": "Inman Food Lion at 11149 Asheville Hwy in Inman, SC",
       "state": "SC",
-      "city": "Greenville",
-      "expiration": "11/08/2026",
-      "url": "https://offers.greatclips.com/lzDUsuJ",
+      "city": "Inman",
+      "expiration": "11/15/2026",
+      "url": "https://offers.greatclips.com/oCDIpKo",
       "source": "dealsfinders"
     },
     {
@@ -1883,6 +1613,16 @@
       "source": "dealsfinders"
     },
     {
+      "code": "WJiUPQ3",
+      "price": "$7.99",
+      "location": "Arlington at 11830 Milton Wilson Rd in Arlington, TN",
+      "state": "TN",
+      "city": "Arlington",
+      "expiration": "11/29/2026",
+      "url": "https://offers.greatclips.com/WJiUPQ3",
+      "source": "dealsfinders"
+    },
+    {
       "code": "d0WdGBO",
       "price": "$9.99",
       "location": "Tate's Gallery at 1035 N Cedar Bluff Rd in Knoxville, TN",
@@ -1890,16 +1630,6 @@
       "city": "Knoxville",
       "expiration": "11/13/2026",
       "url": "https://offers.greatclips.com/d0WdGBO",
-      "source": "dealsfinders"
-    },
-    {
-      "code": "dDEKTQS",
-      "price": "$9.99",
-      "location": "Madisonville Plaza Shopping Center at 111 Kefauver Ln in Madisonville, TN",
-      "state": "TN",
-      "city": "Madisonville",
-      "expiration": "11/13/2026",
-      "url": "https://offers.greatclips.com/dDEKTQS",
       "source": "dealsfinders"
     },
     {
@@ -1913,223 +1643,153 @@
       "source": "dealsfinders"
     },
     {
-      "code": "nQ9Apw7",
+      "code": "mvoeYl6",
+      "price": "$7.99",
+      "location": "Walmart Center-Lewisburg at 1364 N Ellington Pkwy in Lewisburg, TN",
+      "state": "TN",
+      "city": "Lewisburg",
+      "expiration": "11/29/2026",
+      "url": "https://offers.greatclips.com/mvoeYl6",
+      "source": "dealsfinders"
+    },
+    {
+      "code": "yaGhTtH",
+      "price": "$8.99",
+      "location": "Cumberland Plaza at 1339 Smithville Hwy in McMinnville, TN",
+      "state": "TN",
+      "city": "McMinnville",
+      "expiration": "11/13/2026",
+      "url": "https://offers.greatclips.com/yaGhTtH",
+      "source": "dealsfinders"
+    },
+    {
+      "code": "FR5VaZJ",
       "price": "$9.99",
-      "location": "Harriman Retail Center at 1835 Griffith Dr in Harriman, TN",
-      "state": "TN",
-      "city": "Harriman",
-      "expiration": "11/13/2026",
-      "url": "https://offers.greatclips.com/nQ9Apw7",
-      "source": "dealsfinders"
-    },
-    {
-      "code": "vqPaEqU",
-      "price": "$10.99",
-      "location": "Greensboro Village at 1483 Nashville Pike in Gallatin, TN",
-      "state": "TN",
-      "city": "Gallatin",
-      "expiration": "11/13/2026",
-      "url": "https://offers.greatclips.com/vqPaEqU",
-      "source": "dealsfinders"
-    },
-    {
-      "code": "3XOzLrJ",
-      "price": "$10.99",
-      "location": "Victoria at 8902 N Navarro St in Victoria, TX",
+      "location": "Cat Hollow at 16720 Ranch Road 620 in Round Rock, TX",
       "state": "TX",
-      "city": "Victoria",
-      "expiration": "11/15/2026",
-      "url": "https://offers.greatclips.com/3XOzLrJ",
+      "city": "Round Rock",
+      "expiration": "11/20/2026",
+      "url": "https://offers.greatclips.com/FR5VaZJ",
       "source": "dealsfinders"
     },
     {
-      "code": "6LAZXOE",
-      "price": "$10.99",
-      "location": "W League City Pkwy at Hobbs at 1940 W League City Pkwy in League City, TX",
+      "code": "H95r517",
+      "price": "$9.99",
+      "location": "Abilene",
       "state": "TX",
-      "city": "League City",
-      "expiration": "11/15/2026",
-      "url": "https://offers.greatclips.com/6LAZXOE",
+      "city": "",
+      "expiration": "11/20/2026",
+      "url": "https://offers.greatclips.com/H95r517",
       "source": "dealsfinders"
     },
     {
-      "code": "87AjNWK",
-      "price": "$8.99",
-      "location": "Aliana at 10173 W Grand Pkwy S in Richmond, TX",
+      "code": "Jpm359N",
+      "price": "$9.99",
+      "location": "Amarillo area  salons",
       "state": "TX",
-      "city": "Richmond",
-      "expiration": "11/16/2026",
-      "url": "https://offers.greatclips.com/87AjNWK",
+      "city": "",
+      "expiration": "Active",
+      "url": "https://offers.greatclips.com/Jpm359N",
       "source": "dealsfinders"
     },
     {
-      "code": "DCddHlq",
-      "price": "$8.99",
-      "location": "Bay Hill at 1450 W Grand Pkwy S in Katy, TX",
+      "code": "Kve57H1",
+      "price": "$9.99",
+      "location": "Sharyland Towne Crossing - 2505 E Expressway 83 in Mission, TX",
+      "state": "TX",
+      "city": "Mission",
+      "expiration": "11/20/2026",
+      "url": "https://offers.greatclips.com/Kve57H1",
+      "source": "dealsfinders"
+    },
+    {
+      "code": "POvwGBO",
+      "price": "$9.99",
+      "location": "The Ridge - 1409 E Ridge Rd in McAllen, TX",
+      "state": "TX",
+      "city": "McAllen",
+      "expiration": "11/20/2026",
+      "url": "https://offers.greatclips.com/POvwGBO",
+      "source": "dealsfinders"
+    },
+    {
+      "code": "QsuJVch",
+      "price": "$9.99",
+      "location": "Helotes Town Center at 9708 Business Pkwy in Helotes, TX",
+      "state": "TX",
+      "city": "Helotes",
+      "expiration": "11/27/2026",
+      "url": "https://offers.greatclips.com/QsuJVch",
+      "source": "dealsfinders"
+    },
+    {
+      "code": "W6BwpE1",
+      "price": "$9.99",
+      "location": "Lavon Retail Center at 845 S State Hwy 78 in Lavon, TX",
+      "state": "TX",
+      "city": "Lavon",
+      "expiration": "11/29/2026",
+      "url": "https://offers.greatclips.com/W6BwpE1",
+      "source": "dealsfinders"
+    },
+    {
+      "code": "WpGWSTb",
+      "price": "$6.99",
+      "location": "Sunterra Shopping Center at 28030 Stockdick School Rd in Katy, TX",
       "state": "TX",
       "city": "Katy",
-      "expiration": "11/16/2026",
-      "url": "https://offers.greatclips.com/DCddHlq",
+      "expiration": "11/18/2026",
+      "url": "https://offers.greatclips.com/WpGWSTb",
       "source": "dealsfinders"
     },
     {
-      "code": "F4TmK7J",
-      "price": "$10.99",
-      "location": "Augusta Woods at 25760 Kuykendahl Rd in Tomball, TX",
+      "code": "jGrvJKC",
+      "price": "$4.99",
+      "location": "Sunterra Shopping Center at 28030 Stockdick School Rd in Katy, TX",
       "state": "TX",
-      "city": "Tomball",
-      "expiration": "11/15/2026",
-      "url": "https://offers.greatclips.com/F4TmK7J",
+      "city": "Katy",
+      "expiration": "11/11/2026",
+      "url": "https://offers.greatclips.com/jGrvJKC",
       "source": "dealsfinders"
     },
     {
-      "code": "GkyprE2",
-      "price": "$10.99",
-      "location": "Shops at Oak Forest at 1210 W 43rd St in Houston, TX",
-      "state": "TX",
-      "city": "Houston",
-      "expiration": "11/15/2026",
-      "url": "https://offers.greatclips.com/GkyprE2",
-      "source": "dealsfinders"
-    },
-    {
-      "code": "HjgafRV",
-      "price": "$10.99",
-      "location": "Ashford Center at 12545 Briar Forest Dr in Houston, TX",
-      "state": "TX",
-      "city": "Houston",
-      "expiration": "11/15/2026",
-      "url": "https://offers.greatclips.com/HjgafRV",
-      "source": "dealsfinders"
-    },
-    {
-      "code": "TdGGrTo",
-      "price": "$10.99",
-      "location": "Sawyer Heights Village at 1923 Taylor St in Houston, TX",
-      "state": "TX",
-      "city": "Houston",
-      "expiration": "11/15/2026",
-      "url": "https://offers.greatclips.com/TdGGrTo",
-      "source": "dealsfinders"
-    },
-    {
-      "code": "ibmBsH3",
-      "price": "$8.99",
-      "location": "Waterside at 8019 W Grand Pkwy S in Richmond, TX",
-      "state": "TX",
-      "city": "Richmond",
-      "expiration": "11/16/2026",
-      "url": "https://offers.greatclips.com/ibmBsH3",
-      "source": "dealsfinders"
-    },
-    {
-      "code": "kib7VLH",
-      "price": "$12.99",
-      "location": "Port Arthur at 8425 Memorial Blvd in Port Arthur, TX",
-      "state": "TX",
-      "city": "Port Arthur",
-      "expiration": "12/10/2026",
-      "url": "https://offers.greatclips.com/kib7VLH",
-      "source": "dealsfinders"
-    },
-    {
-      "code": "2tHFend",
+      "code": "vXzFVpU",
       "price": "$9.99",
-      "location": "Maceys Holladay at 4534 S Highland Dr in Salt Lake City, UT",
+      "location": "Fate Village - 4970 E I-30 in Fate, TX",
+      "state": "TX",
+      "city": "Fate",
+      "expiration": "11/20/2026",
+      "url": "https://offers.greatclips.com/vXzFVpU",
+      "source": "dealsfinders"
+    },
+    {
+      "code": "aPwT5AU",
+      "price": "$9.99",
+      "location": "The Orchards at 834 E 800 N in Orem, UT",
+      "state": "UT",
+      "city": "Orem",
+      "expiration": "12/03/2026",
+      "url": "https://offers.greatclips.com/aPwT5AU",
+      "source": "dealsfinders"
+    },
+    {
+      "code": "fL9nHzT",
+      "price": "$9.99",
+      "location": "Northgate Village at 1156 W 800 N in Orem, UT",
+      "state": "UT",
+      "city": "Orem",
+      "expiration": "12/03/2026",
+      "url": "https://offers.greatclips.com/fL9nHzT",
+      "source": "dealsfinders"
+    },
+    {
+      "code": "rjLeLps",
+      "price": "$9.99",
+      "location": "Mill Creek Plaza at 863 E 4500 S in Salt Lake City, UT",
       "state": "UT",
       "city": "Salt Lake City",
-      "expiration": "11/07/2026",
-      "url": "https://offers.greatclips.com/2tHFend",
-      "source": "dealsfinders"
-    },
-    {
-      "code": "ERZMSra",
-      "price": "$9.99",
-      "location": "Brighton Point Shopping Center at 3426 E Bengal Blvd in Cottonwood Heights, UT",
-      "state": "UT",
-      "city": "Cottonwood Heights",
-      "expiration": "11/07/2026",
-      "url": "https://offers.greatclips.com/ERZMSra",
-      "source": "dealsfinders"
-    },
-    {
-      "code": "OkMazhB",
-      "price": "$9.99",
-      "location": "Smiths on 90th at 1824 W 9000 S in West Jordan, UT",
-      "state": "UT",
-      "city": "West Jordan",
-      "expiration": "11/07/2026",
-      "url": "https://offers.greatclips.com/OkMazhB",
-      "source": "dealsfinders"
-    },
-    {
-      "code": "TXzJfnM",
-      "price": "$9.99",
-      "location": "Riverton Plaza at 1742 W 12600 S in Riverton, UT",
-      "state": "UT",
-      "city": "Riverton",
-      "expiration": "11/07/2026",
-      "url": "https://offers.greatclips.com/TXzJfnM",
-      "source": "dealsfinders"
-    },
-    {
-      "code": "jzltapN",
-      "price": "$9.99",
-      "location": "Rose Creek Crossing at 3673 W 13400 S in Riverton, UT",
-      "state": "UT",
-      "city": "Riverton",
-      "expiration": "11/07/2026",
-      "url": "https://offers.greatclips.com/jzltapN",
-      "source": "dealsfinders"
-    },
-    {
-      "code": "oH7GE6Z",
-      "price": "$9.99",
-      "location": "The Ranch at Bluffdale at 1646 W 14000 S in Bluffdale, UT",
-      "state": "UT",
-      "city": "Bluffdale",
-      "expiration": "11/07/2026",
-      "url": "https://offers.greatclips.com/oH7GE6Z",
-      "source": "dealsfinders"
-    },
-    {
-      "code": "qDc3DkL",
-      "price": "$9.99",
-      "location": "Town Common at 1588 W South Jordan Pkwy in South Jordan, UT",
-      "state": "UT",
-      "city": "South Jordan",
-      "expiration": "11/07/2026",
-      "url": "https://offers.greatclips.com/qDc3DkL",
-      "source": "dealsfinders"
-    },
-    {
-      "code": "1w26RZF",
-      "price": "$9.99",
-      "location": "Richmond area  salons",
-      "state": "VA",
-      "city": "",
-      "expiration": "11/06/2026",
-      "url": "https://offers.greatclips.com/1w26RZF",
-      "source": "dealsfinders"
-    },
-    {
-      "code": "G4aedkn",
-      "price": "$9.99",
-      "location": "Hampton Roads",
-      "state": "VA",
-      "city": "",
-      "expiration": "11/06/2026",
-      "url": "https://offers.greatclips.com/G4aedkn",
-      "source": "dealsfinders"
-    },
-    {
-      "code": "QHEdzrw",
-      "price": "$10.99",
-      "location": "Charlottesville area  salons",
-      "state": "VA",
-      "city": "",
-      "expiration": "11/06/2026",
-      "url": "https://offers.greatclips.com/QHEdzrw",
+      "expiration": "12/03/2026",
+      "url": "https://offers.greatclips.com/rjLeLps",
       "source": "dealsfinders"
     },
     {
@@ -2143,63 +1803,33 @@
       "source": "dealsfinders"
     },
     {
-      "code": "FImXW2n",
-      "price": "$17.99",
-      "location": "Island Plaza at 31595 State Route 20 in Oak Harbor, WA",
+      "code": "29vHKlf",
+      "price": "$15.99",
+      "location": "Cheney Plaza at 2682 1st St in Cheney, WA",
       "state": "WA",
-      "city": "Oak Harbor",
-      "expiration": "11/06/2026",
-      "url": "https://offers.greatclips.com/FImXW2n",
+      "city": "Cheney",
+      "expiration": "11/21/2026",
+      "url": "https://offers.greatclips.com/29vHKlf",
       "source": "dealsfinders"
     },
     {
-      "code": "GNHbrht",
-      "price": "$16.99",
-      "location": "Bishop Boulevard at 690 SE Bishop Blvd in Pullman, WA",
+      "code": "7z3bK7a",
+      "price": "$13.99",
+      "location": "Coal Creek Village at 6971 Coal Creek Pkwy SE in Newcastle, WA",
       "state": "WA",
-      "city": "Pullman",
-      "expiration": "11/06/2026",
-      "url": "https://offers.greatclips.com/GNHbrht",
+      "city": "Newcastle",
+      "expiration": "11/11/2026",
+      "url": "https://offers.greatclips.com/7z3bK7a",
       "source": "dealsfinders"
     },
     {
-      "code": "K1ery3H",
-      "price": "$17.99",
-      "location": "Ferndale Station at 1863 Main St in Ferndale, WA",
+      "code": "UWKL63p",
+      "price": "$15.99",
+      "location": "Crosspointe Plaza at 10408 W SR2 in Spokane, WA",
       "state": "WA",
-      "city": "Ferndale",
-      "expiration": "11/06/2026",
-      "url": "https://offers.greatclips.com/K1ery3H",
-      "source": "dealsfinders"
-    },
-    {
-      "code": "Rqq8Vvv",
-      "price": "$17.99",
-      "location": "Cross Court Center at 191 Cascade Mall Dr in Burlington, WA",
-      "state": "WA",
-      "city": "Burlington",
-      "expiration": "11/06/2026",
-      "url": "https://offers.greatclips.com/Rqq8Vvv",
-      "source": "dealsfinders"
-    },
-    {
-      "code": "XEsQVuV",
-      "price": "$16.99",
-      "location": "Bridge Street Plaza at 303 Bridge St in Clarkston, WA",
-      "state": "WA",
-      "city": "Clarkston",
-      "expiration": "11/06/2026",
-      "url": "https://offers.greatclips.com/XEsQVuV",
-      "source": "dealsfinders"
-    },
-    {
-      "code": "caa1BtF",
-      "price": "$17.99",
-      "location": "North Bellingham Fred Meyer at 1231 W Bakerview Rd in Bellingham, WA",
-      "state": "WA",
-      "city": "Bellingham",
-      "expiration": "11/06/2026",
-      "url": "https://offers.greatclips.com/caa1BtF",
+      "city": "Spokane",
+      "expiration": "11/21/2026",
+      "url": "https://offers.greatclips.com/UWKL63p",
       "source": "dealsfinders"
     },
     {
@@ -2213,23 +1843,23 @@
       "source": "dealsfinders"
     },
     {
-      "code": "lBlBrXX",
-      "price": "$17.99",
-      "location": "Lincoln Street at 1251 Lincoln St in Bellingham, WA",
+      "code": "nPr2E4E",
+      "price": "$18.99",
+      "location": "Duvall Town Center at 15420 Main Street in Duvall, WA",
       "state": "WA",
-      "city": "Bellingham",
-      "expiration": "11/06/2026",
-      "url": "https://offers.greatclips.com/lBlBrXX",
+      "city": "Duvall",
+      "expiration": "11/11/2026",
+      "url": "https://offers.greatclips.com/nPr2E4E",
       "source": "dealsfinders"
     },
     {
-      "code": "sCch8Gq",
-      "price": "$16.99",
-      "location": "Penn Plaza at 1035 N Stratford Rd in Moses Lake, WA",
+      "code": "scQ0Zmp",
+      "price": "$13.99",
+      "location": "Lynnwood Crossing at 6208 196th St SW in Lynnwood, WA",
       "state": "WA",
-      "city": "Moses Lake",
-      "expiration": "11/06/2026",
-      "url": "https://offers.greatclips.com/sCch8Gq",
+      "city": "Lynnwood",
+      "expiration": "11/10/2026",
+      "url": "https://offers.greatclips.com/scQ0Zmp",
       "source": "dealsfinders"
     },
     {
@@ -2293,16 +1923,6 @@
       "source": "dealsfinders"
     },
     {
-      "code": "AKZtFDP",
-      "price": "$18.99",
-      "location": "Lower Mnlnd",
-      "state": "WV",
-      "city": "",
-      "expiration": "11/08/2026",
-      "url": "https://offers.greatclips.com/AKZtFDP",
-      "source": "dealsfinders"
-    },
-    {
       "code": "IlbIMza",
       "price": "$9.99",
       "location": "Merritt Creek Farm - 3030 Champion Drive in Barboursville, WV",
@@ -2310,16 +1930,6 @@
       "city": "Barboursville",
       "expiration": "11/20/2026",
       "url": "https://offers.greatclips.com/IlbIMza",
-      "source": "dealsfinders"
-    },
-    {
-      "code": "JOkbkBO",
-      "price": "$9.99",
-      "location": "Parkersburg area  salons",
-      "state": "WV",
-      "city": "",
-      "expiration": "11/06/2026",
-      "url": "https://offers.greatclips.com/JOkbkBO",
       "source": "dealsfinders"
     },
     {
@@ -2340,26 +1950,6 @@
       "city": "Cross Lanes",
       "expiration": "11/20/2026",
       "url": "https://offers.greatclips.com/UVgTiM6",
-      "source": "dealsfinders"
-    },
-    {
-      "code": "PXUHJrP",
-      "price": "$10.99",
-      "location": "Casper area  salons",
-      "state": "WY",
-      "city": "",
-      "expiration": "11/06/2026",
-      "url": "https://offers.greatclips.com/PXUHJrP",
-      "source": "dealsfinders"
-    },
-    {
-      "code": "sJNYxNW",
-      "price": "$10.99",
-      "location": "Cheyenne",
-      "state": "WY",
-      "city": "",
-      "expiration": "11/06/2026",
-      "url": "https://offers.greatclips.com/sJNYxNW",
       "source": "dealsfinders"
     }
   ]
