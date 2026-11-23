@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>deckweb · deck3d.inp editor &amp; visualizer</title>
+<meta name="description" content="A fast, local, browser-based editor and visualizer for DNS simulation input decks (deck3d.inp).">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="stylesheet" href="assets/css/app.css">
+</head>
+<body>
+<header class="top">
+  <div class="brand"><span class="logo" aria-hidden="true">▦</span> deck<b>web</b></div>
+  <div class="fileinfo" id="fileinfo"></div>
+  <div class="search-wrap">
+    <input id="search" type="search" placeholder="Search parameters…  ( / )" autocomplete="off" spellcheck="false" disabled>
+  </div>
+  <div class="actions">
+    <button id="btn-open" class="btn" title="Open a deck3d.inp file">Open</button>
+    <button id="btn-undo" class="btn icon" title="Undo (Ctrl+Z)" disabled>↶</button>
+    <button id="btn-redo" class="btn icon" title="Redo (Ctrl+Shift+Z)" disabled>↷</button>
+    <div class="menu">
+      <button id="btn-tools" class="btn" disabled>Tools ▾</button>
+      <div class="menu-pop" id="tools-pop" hidden>
+        <button data-act="dormant">Show dormant parameters</button>
+        <button data-act="align">Align columns (like deckcheck --reformat)</button>
+        <button data-act="copy">Copy deck to clipboard</button>
+        <button data-act="reset">Revert all changes</button>
+        <button data-act="close">Close file</button>
+      </div>
+    </div>
+    <button id="btn-save" class="btn" title="Write back to the opened file (Ctrl+S)" hidden>Save</button>
+    <button id="btn-download" class="btn primary" title="Download the edited deck" disabled>Download</button>
+    <button id="btn-theme" class="btn icon" title="Toggle light/dark">◐</button>
+    <button id="btn-preview" class="btn only-narrow" disabled>Preview</button>
+  </div>
+</header>
+
+<main class="app" id="app" hidden>
+  <nav id="nav" aria-label="Deck blocks"></nav>
+  <section id="editor" tabindex="-1"></section>
+  <div class="splitter" id="splitter" title="Drag to resize"></div>
+  <section id="preview">
+    <div class="pv-bar">
+      <div class="seg" role="tablist">
+        <button id="pv-full" class="on" role="tab">Full deck</button>
+        <button id="pv-diff" role="tab">Changes <span id="pv-count" class="pill">0</span></button>
+      </div>
+      <div class="pv-nav">
+        <button id="pv-prev" class="btn icon sm" title="Previous change">▲</button>
+        <button id="pv-next" class="btn icon sm" title="Next change">▼</button>
+      </div>
+    </div>
+    <div id="code" class="code" tabindex="0"></div>
+    <div id="diff" class="code diff" hidden></div>
+  </section>
+</main>
+
+<section class="empty" id="empty">
+  <div class="drop" id="drop">
+    <div class="drop-icon" aria-hidden="true">⇪</div>
+    <h1>Open a <code>deck3d.inp</code></h1>
+    <p>Drop the file here, or <button id="btn-open2" class="link">choose a file</button>.</p>
+    <p class="muted">Everything stays on this computer. The file is never uploaded anywhere.</p>
+    <div id="resume"></div>
+  </div>
+</section>
+
+<input type="file" id="file" accept=".inp,.txt,text/plain" hidden>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="src/core/parser.js"></script>
+<script src="src/core/docs.js"></script>
+<script src="src/config/blocks.js"></script>
+<script src="src/core/validator.js"></script>
+<script src="src/core/summary.js"></script>
+<script src="src/ui/app.js"></script>
+</body>
+</html>
