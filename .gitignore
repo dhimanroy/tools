@@ -4,3 +4,9 @@ __pycache__/
 .DS_Store
 *.log
 server.py
+node_modules/
+
+# DNS simulation input decks (local only)
+*.inp
+deck3d.inp
+

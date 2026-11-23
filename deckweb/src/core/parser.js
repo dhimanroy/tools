@@ -186,6 +186,8 @@
 
   /** Rebuild one assignment line, replacing only the value text. */
   function renderParamLine(p) {
+    // untouched values are returned exactly as written (also keeps a broken ",," visible until fixed)
+    if (p.tokens.length === p.orig.length && p.tokens.every(function (t, i) { return t === p.orig[i]; })) return p.lineRaw;
     var val = p.tokens.join(p.sep);
     if (val === p.valueText) return p.lineRaw;
     var m = p.tail.match(/^(\s*,)?(\s*)([\s\S]*)$/);

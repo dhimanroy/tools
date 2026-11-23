@@ -363,6 +363,8 @@
       var r = act.closest('.row');
       focus = { id: r && r.dataset.id, act: act.dataset.act, i: act.dataset.i, s: act.selectionStart, e: act.selectionEnd };
     }
+    // the Summary is a full-width "slide": the file preview steps aside while it is shown
+    document.body.classList.toggle('summary-mode', !S.search && S.sel === '__checks');
     if (S.search) renderSearch();
     else if (S.sel === '__checks') renderChecks();
     else renderBlock(S.blocks.find(function (b) { return b.id === S.sel; }) || S.blocks[0]);
@@ -489,74 +491,90 @@
     el.editor.innerHTML = h;
   }
 
+  /**
+   * Summary page: one screen of key points, like a slide. No folds, no nested
+   * details; every bullet jumps to its parameter. Full detail lives in the .txt export.
+   */
   function renderChecks() {
     var by = { error: [], warn: [], ok: [], info: [] };
     S.checks.forEach(function (c) { by[c.level].push(c); });
     var nchg = changedLines().length;
-    var ICON = { error: '✗', warn: '!', ok: '✓', info: 'i' };
-    function ckRow(c) {
-      var k = c.keys[0], lv = c.level;
-      return '<div class="ck ' + lv + (k ? ' clickable' : '') + '"' + (k ? ' data-key="' + esc(k) + '"' : '') + '><span class="ic">' + ICON[lv] + '</span>' +
-        '<span class="cb">' + esc(c.block) + '</span><span><span class="ct">' + esc(c.title) + '</span> <span class="cm">— ' + esc(c.msg) + '</span></span><span></span></div>';
-    }
-    var h = '<div class="bh"><div><h2>Summary</h2><div class="sub">The run at a glance, updated on every edit. Click a row to jump to its parameter.</div></div>' +
-      '<div class="bh-side"><button class="btn sm-txt" data-act="sum-copy" title="Copy the summary as text">Copy</button>' +
-      '<button class="btn sm-txt" data-act="sum-dl" title="Download as dnsParamSummary.txt">Download .txt</button>' + pagerTop('__checks') + '</div></div>' +
-      '<div class="summary">' +
-      '<div class="stat err"><div class="sv">' + by.error.length + '</div><div class="sl">errors</div></div>' +
-      '<div class="stat warn"><div class="sv">' + by.warn.length + '</div><div class="sl">warnings</div></div>' +
-      '<div class="stat ok"><div class="sv">' + by.ok.length + '</div><div class="sl">checks passed</div></div>' +
-      '<div class="stat mod"><div class="sv">' + nchg + '</div><div class="sl">changed lines</div></div></div>';
-
-    var fixable = S.model.issues.filter(function (i) { return i.fix; });
-    if (S.model.issues.length) {
-      h += '<div class="card"><div class="card-h"><h3>Syntax</h3>' + (fixable.length > 1 ? '<button class="fixbtn" data-act="fixall">Fix all (' + fixable.length + ')</button>' : '') + '</div>';
-      S.model.issues.forEach(function (iss, n) {
-        h += '<div class="ck ' + (iss.level === 'error' ? 'error' : 'warn') + ' clickable" data-line="' + iss.line + '"><span class="ic">' + (iss.level === 'error' ? '✗' : '!') + '</span>' +
-          '<span class="cb">line ' + (iss.line + 1) + '</span><span class="cm">' + esc(iss.msg) + '</span>' +
-          (iss.fix ? '<button class="fixbtn" data-act="fix" data-n="' + n + '">Fix</button>' : '<span></span>') + '</div>';
-      });
-      h += '</div>';
-    }
-
-    // problems first, so they can't be missed
-    var probs = by.error.concat(by.warn).filter(function (c) { return c.title !== 'Syntax'; });
-    if (probs.length) {
-      h += '<div class="card"><div class="card-h"><h3>Needs attention</h3><span class="muted-s">' + probs.length + '</span></div>' + probs.map(ckRow).join('') + '</div>';
-    }
-
-    // run summary (the content of deckcheck's dnsParamSummary.txt, without storage estimates)
     var groups = DW.buildSummary(S.model, S.hidden, S.grid);
-    groups.forEach(function (g, gi) {
-      h += '<details class="card sg" data-g="' + gi + '"' + (S.sumClosed.has(gi) ? '' : ' open') + '><summary class="card-h"><h3>' + (gi + 1) + '. ' + esc(g.title) + '</h3></summary>';
-      g.rows.forEach(function (r) {
-        var k = r.keys[0];
-        h += '<div class="sr' + (r.level ? ' ' + r.level : '') + (r.sub ? ' sub' : '') + (k ? ' clickable' : '') + '"' + (k ? ' data-key="' + esc(k.toLowerCase()) + '"' : '') +
-          ' title="' + esc(r.keys.join(', ')) + '"><span class="sl">' + esc(r.label) + '</span><span class="sv">' +
-          esc(r.value).replace(/\[([^\]]*=[^\]]*)\]/g, '<span class="kv">$1</span>') + '</span></div>';
-        if (r.detail && r.detail.length) {
-          h += '<details class="sd"><summary>' + (r.mono ? esc(r.mono) + ' · ' : '') + r.detail.length + ' detail' + (r.detail.length === 1 ? '' : 's') + '</summary><div class="sdl">' +
-            r.detail.map(function (d) { return '<span class="dk">' + esc(d[0]) + '</span><span class="dv">' + esc(d[1]) + '</span>'; }).join('') + '</div></details>';
-        }
-      });
-      if (gi === 0) {
-        h += '<div class="ck-grid">' +
-          ['imax', 'jmax', 'kmax'].map(function (k) {
-            return '<label>' + k + '<input type="text" inputmode="numeric" data-grid="' + k + '" value="' + esc(S.grid[k] || '') + '" placeholder="auto" autocomplete="off"></label>';
-          }).join('') +
-          '<button class="btn primary" data-act="grid-apply" disabled>Apply</button>' +
-          '<div class="hint">Grid size from REST/grid.h5 (optional; a browser can’t read HDF5). Applies on Enter, Apply, or clicking away. Blank = use RunParam%*end_rd.</div></div>';
-      }
-      h += '</details>';
-    });
 
-    // passed / informational checks, folded away
-    var rest = by.info.concat(by.ok);
-    if (rest.length) {
-      h += '<details class="card sg" data-g="checks"' + (S.sumClosed.has('checks') ? ' open' : '') + '><summary class="card-h"><h3>Passed checks</h3><span class="muted-s">' + rest.length + '</span></summary>' +
-        rest.map(ckRow).join('') + '</details>';
+    var rt = groups.runType;
+    var h = '<div class="bh"><div><h2>Summary' + (rt ? ' <span class="run-type ' + rt.model.toLowerCase().replace('+', '-') + ' clickable" data-key="' + esc(rt.keys[0].toLowerCase()) + '" title="' +
+      esc(rt.name + ': ' + rt.why + ' (click to jump to ' + rt.keys[0] + ')') + '">' + rt.kind + '</span><span class="run-why">' + esc(rt.name + ' · ' + rt.why) + '</span>' : '') +
+      '</h2><div class="sub">' + esc(S.fileName || 'deck3d.inp') +
+      (nchg ? ' · <span class="chg-t">' + nchg + ' changed line' + (nchg > 1 ? 's' : '') + '</span>' : ' · unchanged') + '</div></div>' +
+      '<div class="bh-side"><button class="btn sm-txt" data-act="sum-copy" title="Copy the summary as text">Copy</button>' +
+      '<button class="btn sm-txt" data-act="sum-dl" title="Download as dnsParamSummary.txt (key points + full detail)">Download .txt</button>' + pagerTop('__checks') + '</div></div>';
+
+    // ---- one status line, then only the problems (one line each)
+    var probs = by.error.concat(by.warn).filter(function (c) { return c.title !== 'Syntax'; });
+    var nErr = by.error.length, nWarn = by.warn.length, nOk = by.ok.length + by.info.length;
+    h += '<div class="status-line ' + (nErr ? 'err' : nWarn ? 'warn' : 'ok') + '">' +
+      (nErr ? '<b>✗ ' + nErr + ' error' + (nErr > 1 ? 's' : '') + '</b>' : '<b>✓ No errors</b>') +
+      ' · ' + nWarn + ' warning' + (nWarn === 1 ? '' : 's') + ' · ' + nOk + ' checks pass</div>';
+    if (S.model.issues.length || probs.length) {
+      h += '<ul class="issues">';
+      S.model.issues.forEach(function (iss, n) {
+        h += '<li class="' + (iss.level === 'error' ? 'error' : 'warn') + ' clickable" data-line="' + iss.line + '">' +
+          '<span class="ii">' + (iss.level === 'error' ? '✗' : '!') + '</span><span>Line ' + (iss.line + 1) + ': ' + esc(iss.msg) + '</span>' +
+          (iss.fix ? '<button class="fixbtn" data-act="fix" data-n="' + n + '">Fix</button>' : '') + '</li>';
+      });
+      probs.forEach(function (c) {
+        var k = c.keys[0];
+        h += '<li class="' + c.level + (k ? ' clickable' : '') + '"' + (k ? ' data-key="' + esc(k) + '"' : '') + '>' +
+          '<span class="ii">' + (c.level === 'error' ? '✗' : '!') + '</span><span class="it" title="' + esc(c.title + ': ' + c.msg) + '"><b>' + esc(c.title) + '</b> — ' + esc(c.msg) + '</span></li>';
+      });
+      h += '</ul>';
     }
-    el.editor.innerHTML = h + pagerBottom('__checks');
+
+    // ---- key points
+    h += '<div class="kp-grid">';
+    groups.keyPoints.forEach(function (pn, pi) {
+      h += '<section class="kp"><h3>' + esc(pn.title) + '</h3><ul>';
+      pn.items.forEach(function (it) {
+        var k = it.keys[0];
+        h += '<li class="' + (it.level || '') + (k ? ' clickable' : '') + '"' + (k ? ' data-key="' + esc(k.toLowerCase()) + '" title="' + esc(it.keys.join(', ')) + '"' : '') + '>' +
+          '<span class="kl">' + esc(it.label.replace(/\s*\(.*\)$/, '')) + '</span><span class="kt">' + mathText(it.text) + '</span></li>';
+      });
+      h += '</ul>';
+      if (pi === 0) {
+        h += '<div class="kp-grid-in" title="Grid size from REST/grid.h5 (a browser can’t read HDF5). Applies on Enter, Apply, or clicking away. Blank = use the read window.">' +
+          '<span class="kl">Grid file</span><span class="ck-grid">' +
+          ['imax', 'jmax', 'kmax'].map(function (k) {
+            return '<input type="text" inputmode="numeric" data-grid="' + k + '" value="' + esc(S.grid[k] || '') + '" placeholder="' + k + '" aria-label="' + k + '" autocomplete="off">';
+          }).join('') +
+          '<button class="btn sm-txt" data-act="grid-apply" disabled>Apply</button></span></div>';
+      }
+      h += '</section>';
+    });
+    h += '</div>';
+
+    // no bottom pager here: the Summary should fit on one screen (‹ › in the header and Alt+↓ still work)
+    el.editor.innerHTML = h;
+  }
+
+  // ---- typeset math for the Summary: {M|∞} -> italic M with subscript ∞, 2.58e5 -> 2.58 × 10⁵
+  function mathSym(v) {
+    if (/^Δ./.test(v)) return 'Δ<i>' + esc(v.slice(1)) + '</i>';       // Δt: operator upright, variable italic
+    if (/^[A-Za-z]{2,}$/.test(v)) return esc(v);                      // Re, Pr: upright by convention
+    return '<i>' + esc(v) + '</i>';
+  }
+  function mathSub(s) {
+    var m = s.match(/^(\D+)(\d+)$/);                                   // δ0 -> δ with subscript 0
+    if (m) return '<i>' + esc(m[1]) + '</i><sub>' + m[2] + '</sub>';
+    return /^[A-Za-zα-ω]+$/.test(s) ? '<i>' + esc(s) + '</i>' : esc(s); // letter subscripts italic (u, w, r, t, p); ∞ and digits upright
+  }
+  function mathText(s) {
+    return s.split(/(\{[^}]+\})/).map(function (part) {
+      var m = part.match(/^\{([^|}]+)(?:\|([^}]+))?\}$/);
+      if (m) return '<span class="mth">' + mathSym(m[1]) + (m[2] ? '<sub>' + mathSub(m[2]) + '</sub>' : '') + '</span>';
+      return esc(part).replace(/(\d(?:\.\d+)?)e([+-]?)(\d+)\b/g, function (_, a, sgn, e) {
+        return a + '&#8201;×&#8201;10<sup>' + (sgn === '-' ? '−' : '') + e + '</sup>';
+      });
+    }).join('');
   }
 
   function summaryText() { return DW.summaryText(DW.buildSummary(S.model, S.hidden, S.grid), S.fileName); }
