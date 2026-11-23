@@ -1,0 +1,14 @@
+{
+  "name": "deckweb",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Local, browser-based editor for deck3d.inp. The app itself needs no build or install; this file only exists for the tests.",
+  "scripts": {
+    "test": "node --test tests/unit.test.js",
+    "test:e2e": "node --test tests/e2e.test.js",
+    "test:all": "node --test tests/"
+  },
+  "devDependencies": {
+    "playwright": "^1.40.0"
+  }
+}

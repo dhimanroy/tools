@@ -47,20 +47,48 @@ Keyboard shortcuts: `/` search · `Ctrl+S` save or download · `Ctrl+O` open · 
 ```
 deckweb/
 ├── index.html              entry point (open this)
+├── favicon.svg
 ├── README.md
+├── package.json            test scripts only (the app needs no install)
 ├── assets/
 │   └── css/app.css         styles, light/dark theme
-└── src/
-    ├── core/               logic, no UI code
-    │   ├── parser.js       line-preserving namelist parser, syntax checks, serializer, column aligner
-    │   ├── docs.js         pulls descriptions and options out of the !! comment blocks
-    │   ├── validator.js    checks (errors / warnings)
-    │   └── summary.js      run summary shown on the Summary page and exported as .txt
-    ├── config/
-    │   └── blocks.js       block titles, dormancy rules, count → array links
-    └── ui/
-        └── app.js          UI, state, live preview, file handling
+├── src/
+│   ├── core/               logic, no UI code
+│   │   ├── parser.js       line-preserving namelist parser, syntax checks, serializer, column aligner
+│   │   ├── docs.js         pulls descriptions and options out of the !! comment blocks
+│   │   ├── validator.js    checks (errors / warnings)
+│   │   └── summary.js      run summary shown on the Summary page and exported as .txt
+│   ├── config/
+│   │   └── blocks.js       block titles, dormancy rules, count → array links
+│   └── ui/
+│       └── app.js          UI, state, live preview, file handling
+└── tests/
+    ├── README.md           how to run and write tests
+    ├── helpers.js          load the modules in Node, edit a deck, analyse it
+    ├── unit.test.js        parser, docs, dormancy, arrays, validator, summary (Node only)
+    ├── e2e.test.js         the real page in headless Chromium (Playwright)
+    └── fixtures/deck3d.inp sample deck used by every test
 ```
 
 To teach the app about a new switch, add a line to `RULES` in `src/config/blocks.js`.
 To link a new count parameter to its arrays, add it to `ARRAY_COUNTS` in the same file.
+
+## Tests
+
+```bash
+npm test
+```
+
+That runs the unit tests in Node, with nothing to install. The browser tests need Playwright once:
+
+```bash
+npm install && npx playwright install chromium
+```
+
+Then:
+
+```bash
+npm run test:e2e
+```
+
+See `tests/README.md` for how to add a test.

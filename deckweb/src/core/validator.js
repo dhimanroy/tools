@@ -65,8 +65,9 @@
         var near = [];
         for (var x = 1; x <= pts; x++) if (pts % x === 0) near.push(x);
         near.sort(function (a, b) { return Math.abs(a - n) - Math.abs(b - n); });
-        add('error', 'RunParam', 'MPI ' + d[0] + '-direction', pts + ' points do not divide evenly by ' + d[1] + ' = ' + n +
-          ' (remainder ' + (pts % n) + '). Nearest divisors: ' + near.slice(0, 4).sort(function (a, b) { return a - b; }).join(', '), [key]);
+        // a warning, not an error: the solver handles uneven MPI blocks (some ranks get one extra point)
+        add('warn', 'RunParam', 'MPI ' + d[0] + '-direction', pts + ' points do not divide evenly by ' + d[1] + ' = ' + n +
+          ' (remainder ' + (pts % n) + ', uneven blocks). Even divisors nearby: ' + near.slice(0, 4).sort(function (a, b) { return a - b; }).join(', '), [key]);
       } else if (pts > 0) {
         add('ok', 'RunParam', 'MPI ' + d[0] + '-direction', pts + ' / ' + n + ' = ' + (pts / n) + ' points per rank', []);
       }
@@ -101,21 +102,13 @@
       else add('ok', 'FlowParam', 'Wall thermal condition', iso ? 'Isothermal wall, Twall = ' + tw + ' K' : 'Adiabatic wall', []);
     }
 
-    // ---- periodic BC pairs
-    function periodic(key) {
-      var p = get(key);
-      if (!p) return null;
-      var o = p.doc.options.find(function (x) { return x.value === p.tokens[0]; });
-      return o ? /periodic/i.test(o.label) : null;
+    // (no periodic-pair check on BCParam: a periodic face does not require a periodic opposite face in this solver)
+
+    // ---- one simulation type at a time: DNS, LES or RANS
+    if (num('LESParam%iuse', 0) !== 0 && num('RANSParam%iuse', 0) !== 0) {
+      add('error', 'LESParam', 'LES and RANS both on', 'LESParam%iuse and RANSParam%iuse are both on; the code runs one type at a time (DNS, LES or RANS), so switch one off',
+        ['LESParam%iuse', 'RANSParam%iuse']);
     }
-    [['Streamwise (i)', 'BCParam%inletbc', 'BCParam%ioutletbc'],
-      ['Spanwise (j)', 'BCParam%ispanwisebegbc', 'BCParam%ispanwiseendbc'],
-      ['Wall-normal (k)', 'BCParam%ibotbc', 'BCParam%itopbc']].forEach(function (d) {
-      var a = periodic(d[1]), b = periodic(d[2]);
-      if (a === null || b === null) return;
-      if (a !== b) add('error', 'BCParam', d[0] + ' periodicity', (a ? d[1] : d[2]) + ' is periodic but ' + (a ? d[2] : d[1]) + ' is not; periodic BCs must be paired', [d[1], d[2]]);
-      else add('ok', 'BCParam', d[0] + ' BC pair', a ? 'Periodic on both sides' : 'Non-periodic on both sides', []);
-    });
 
     // ---- time step
     var icd = get('TemporalParam%iconst_dt'), dtc = get('TemporalParam%dt_const');

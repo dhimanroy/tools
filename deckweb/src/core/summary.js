@@ -89,7 +89,7 @@
       row(g1, 'Points per rank', (ni / inn) + ' × ' + (nj / jnn) + ' × ' + (nk / knn) + ' = ' + fmtInt(tot / (inn * jnn * knn)), ['RunParam%inode']);
     } else {
       row(g1, 'Points per rank', 'uneven: remainder i = ' + ri + ', j = ' + rj + ', k = ' + rk + ' (≈ ' + fmtNum(ni / inn, 2) + ' × ' + fmtNum(nj / jnn, 2) + ' × ' + fmtNum(nk / knn, 2) + ')',
-        ['RunParam%inode', 'RunParam%jnode', 'RunParam%knode'], { level: 'error' });
+        ['RunParam%inode', 'RunParam%jnode', 'RunParam%knode'], { level: 'warn' });
     }
     if (has('RunParam%iflowdataformat')) {
       row(g1, 'Flow data I/O', raw('RunParam%iflowdataformat') === raw('RunParam%iflowdataformat_wt')
@@ -129,7 +129,7 @@
     // ---------------------------------------------------------------- 3. numerics
     var g3 = group('Numerical schemes & time integration');
     var conv = num('RunParam%iConvSchm', 0), r = num('RunParam%ConvStencil', 4), cl = label('RunParam%iConvSchm');
-    var order = /central|hybrid/i.test(cl) ? 2 * r : /weno/i.test(cl) ? 2 * r - 1 : null;
+    var order = /central|hybrid/i.test(cl) ? 2 * r : /weno/i.test(cl) ? 2 * r - 1 : (conv === 1 || conv === 2 ? 2 * r : conv === 0 ? 2 * r - 1 : null);
     row(g3, 'Convective scheme', cap(cl || 'scheme ' + conv) + (order ? ', ' + order + getOrdinal(order) + ' order' : '') + ' [iConvSchm = ' + conv + ', ConvStencil = ' + r + ']',
       ['RunParam%iConvSchm', 'RunParam%ConvStencil']);
     if (live('WENOParam%iglobalscheme')) {
@@ -197,8 +197,9 @@
     // ---------------------------------------------------------------- 4. BCs
     var g4 = group('Boundary conditions & sponges');
     row(g4, 'Inlet (i = 1)', named('BCParam%inletbc'), ['BCParam%inletbc']);
+    var inx = [];
     if (num('BCParam%inletbc', 0) !== 0) {
-      var inx = ['data type: ' + named('BCParam%inletdatatype')];
+      inx.push('data type: ' + named('BCParam%inletdatatype'));
       if (on('BCParam%isynthetic')) inx.push('digital-filter turbulence');
       if (on('BCParam%irescale')) inx.push('rescaling');
       if (num('BCParam%inletbc', 0) === 5) inx.push('characteristic: ' + named('BCParam%inletbcCharatype'));
@@ -232,7 +233,7 @@
 
     // ---------------------------------------------------------------- 5. output
     var g5 = group('Active post-processing & output');
-    var off = [];
+    var off = [], activeOut = [];
     SAVERS.forEach(function (sv) {
       var pfx = sv[0], sw = P(pfx + '%istatus');
       if (!sw) return;
@@ -244,15 +245,20 @@
       if (ks) parts.push('from step ' + raw(ks));
       var ki = k('nsave') || k('nsaveinterval') || k('ninterval');
       var kp = k('period') || k('Period'), kn = k('nsaveperiod');
+      var when;
       if (ki) {
         var n = num(ki, 0);
-        parts.push('every ' + fmtInt(n) + ' step' + (n === 1 ? '' : 's') + (n > 0 ? ' (~' + fmtInt(Math.floor(nstep / n)) + ' outputs)' : ''));
+        when = 'every ' + fmtInt(n) + ' step' + (n === 1 ? '' : 's') + (n > 0 ? ' (~' + fmtInt(Math.floor(nstep / n)) + ' outputs)' : '');
+        parts.push(when);
       } else if (kp) {
         var every = num(kp, 0) * (kn ? num(kn, 1) : 1);
-        parts.push('every ' + (kn && num(kn, 1) !== 1 ? raw(kn) + ' × ' : '') + fmtNum(num(kp, 0)) + ' s' + (tphys && every > 0 ? ' (~' + fmtInt(Math.floor(tphys / every)) + ' outputs)' : ''));
+        when = 'every ' + (kn && num(kn, 1) !== 1 ? raw(kn) + ' × ' : '') + fmtNum(num(kp, 0)) + ' s' + (tphys && every > 0 ? ' (~' + fmtInt(Math.floor(tphys / every)) + ' outputs)' : '');
+        parts.push(when);
       } else {
+        when = 'with restart files (every ' + fmtInt(nsr) + ' steps)';
         parts.push('interval not set in deck (written with restart files, every ' + fmtInt(nsr) + ' steps)');
       }
+      activeOut.push({ label: sv[1], text: when + (ks && raw(ks) !== '0' ? ', from step ' + raw(ks) : ''), keys: [pfx + '%istatus'].concat(ki ? [ki] : []) });
       var reg = region(pfx);
       if (reg) parts.push(reg);
       var detail = model.params.filter(function (p) { return p.parent === pfx && p.name.toLowerCase() !== 'istatus'; })
@@ -261,6 +267,195 @@
     });
     if (!g5.rows.length) row(g5, 'Savers', 'none active', []);
     if (off.length) row(g5, 'Inactive', off.length + ' modules off: ' + off.join(', '), [], { level: 'muted' });
+
+    // ---------------------------------------------------------------- key points (Summary page)
+    // Short, slide-style bullets. Every item keeps the parameters it comes from.
+    function shortLabel(k, fallback) {
+      var l = label(k) || fallback || 'type ' + raw(k);
+      l = l.replace(/\s*\(.*$/, '').replace(/,.*$/, '').replace(/\s*boundary condition\b/i, '').replace(/\s+BC\b/, '').trim();
+      return cap(l);
+    }
+    function sig(x, n) { return isFinite(x) ? String(+x.toPrecision(n || 3)) : '—'; }
+    function sci(x) { return isFinite(x) ? x.toExponential(2).replace('e+', 'e') : '—'; }
+    var kp = [];
+    /** One line per zone: "i 1–1720 · j 1–1920 · k 1–274" (first 4 zones, then a count). */
+    function zoneItems(p, top, stem) {
+      var n = Math.max(0, num(top + '%' + stem + 'num', 1)), shown = Math.min(n, 4);
+      for (var z = 0; z < shown; z++) {
+        var ext = ['i', 'j', 'k'].map(function (ax) {
+          var b = nums(top + '%' + stem + ax + 'beg')[z], e = nums(top + '%' + stem + ax + 'end')[z];
+          return '{' + ax + '} ' + (b == null ? '?' : b) + '–' + (e == null ? '?' : e);
+        }).join(' · ');
+        item(p, 'Zone ' + (z + 1), ext, [top + '%' + stem + 'ibeg', top + '%' + stem + 'num']);
+      }
+      if (n > shown) item(p, '', '+' + (n - shown) + ' more zone' + (n - shown > 1 ? 's' : ''), [top + '%' + stem + 'num'], 'muted');
+    }
+    /** "Ut(kBL)/Ut(klen) ~ 0.99  (tangential velocity)" -> "Tangential velocity" */
+    function paren(l) { var m = (l || '').match(/\(([^()]*)\)\s*$/); return m ? cap(m[1]) : l ? cap(l) : ''; }
+    function panel(title) { var p = { title: title, items: [] }; kp.push(p); return p; }
+    function item(p, lab, text, keys, level) { p.items.push({ label: lab, text: text, keys: keys || [], level: level || '' }); }
+    var RD = ['RunParam%ibeg_rd', 'RunParam%iend_rd', 'RunParam%jbeg_rd', 'RunParam%jend_rd', 'RunParam%kbeg_rd', 'RunParam%kend_rd'];
+    var NODES = ['RunParam%inode', 'RunParam%jnode', 'RunParam%knode'];
+    var uneven = ri || rj || rk;
+
+    var pd = panel('Domain & MPI');
+    // coordinate system (FlowParam%iCylinderCoordinate) and per-direction grid geometry (ghost-point generation)
+    var cyl = on('FlowParam%iCylinderCoordinate');
+    item(pd, 'Coordinates', cyl
+      ? 'Cylindrical · ' + (shortLabel('BCParam%CylinParam%ischeme') || 'ischeme = ' + raw('BCParam%CylinParam%ischeme'))
+      : 'Cartesian ({x}, {y}, {z})', ['FlowParam%iCylinderCoordinate'].concat(cyl ? ['BCParam%CylinParam%ischeme'] : []));
+    function geoName(k) {
+      var l = label(k) || 'type ' + raw(k);
+      l = l.replace(/planner/i, 'planar').replace(/\s*geomet(?:e)?ry\b/i, '').replace(/\s*\(.*$/, '').replace(/,.*$/, '').trim();
+      return l.toLowerCase();
+    }
+    var GEO = ['BCParam%istreamwisegeometry', 'BCParam%ispanwisegeometry', 'BCParam%iwallnormalgeometry'];
+    var geos = GEO.map(function (k) { return has(k) ? geoName(k) : '—'; });
+    item(pd, 'Geometry', geos[0] === geos[1] && geos[1] === geos[2]
+      ? cap(geos[0]) + ' in {i}, {j}, {k}'
+      : '{i} ' + geos[0] + ' · {j} ' + geos[1] + ' · {k} ' + geos[2], GEO);
+    item(pd, 'Grid',ni + ' × ' + nj + ' × ' + nk + ' = ' + (tot >= 1e9 ? sig(tot / 1e9) + ' B' : sig(tot / 1e6) + ' M') + ' points', RD);
+    item(pd, 'MPI', inn + ' × ' + jnn + ' × ' + knn + ' = ' + fmtInt(inn * jnn * knn) + ' ranks', NODES);
+    item(pd, 'Per rank', uneven ? 'uneven (remainder ' + ri + ', ' + rj + ', ' + rk + ')' : (ni / inn) + ' × ' + (nj / jnn) + ' × ' + (nk / knn) + ' points',
+      NODES, uneven ? 'warn' : '');
+    if (gi || gj || gk) item(pd, 'Grid file', (gi || '?') + ' × ' + (gj || '?') + ' × ' + (gk || '?'), []);
+
+    var pf = panel('Flow');
+    // {v|sub} marks a math symbol with a subscript, {v} a plain math symbol; see mathText()
+    item(pf, 'Mach', '{M|∞} = ' + sig(M, 4), ['FlowParam%uinf', 'FlowParam%tinf']);
+    item(pf, 'Reynolds', '{Re|δ0} = ' + sci(mu > 0 ? rho * u * d0 / mu : NaN) + ' · {Re|u} = ' + sci(mu > 0 ? rho * u / mu : NaN) + ' m⁻¹', ['FlowParam%rhoinf', 'FlowParam%delta0']);
+    item(pf, 'Freestream', '{u|∞} = ' + sig(u, 4) + ' m/s · {T|∞} = ' + sig(T, 4) + ' K · {ρ|∞} = ' + sig(rho, 3) + ' kg/m³', ['FlowParam%uinf', 'FlowParam%tinf', 'FlowParam%rhoinf']);
+    item(pf, 'Ref. length', '{δ|0} = ' + sig(d0 * 1000, 3) + ' mm', ['FlowParam%delta0']);
+    // Recovery temperature T_r = T∞ (1 + r (γ−1)/2 M∞²), turbulent recovery factor r = 0.89 (≈ Pr^(1/3), Pr = 0.71), γ = 1.4
+    var RECOVERY = 0.89;
+    var Tr = T > 0 ? T * (1 + RECOVERY * 0.2 * M * M) : NaN;
+    // the wall thermal condition (iadiabaticwall) applies to the k = 1 face, so only report it when that face is a wall
+    var bottomIsWall = /wall/i.test(label('BCParam%ibotbc'));
+    if (bottomIsWall) {
+      item(pf, 'Wall (k = 1)', iso ? 'isothermal, {T|w} = ' + sig(tw, 4) + ' K' : 'adiabatic', ['BCParam%iadiabaticwall', 'FlowParam%twall'], iso && !(tw > 0) ? 'error' : '');
+      if (iso && tw > 0) item(pf, 'T ratios','{T|w}/{T|∞} = ' + (T > 0 ? (tw / T).toFixed(2) : '—') + ' · {T|w}/{T|r} = ' + (Tr > 0 ? (tw / Tr).toFixed(2) : '—'), ['FlowParam%twall']);
+    }
+    item(pf, 'Recovery', '{T|r} = ' + sig(Tr, 4) + ' K ({r} = ' + RECOVERY + ')', ['FlowParam%tinf', 'FlowParam%uinf']);
+    if (imu !== 0) item(pf, 'Viscosity', shortLabel('FlowParam%imu'), ['FlowParam%imu']);
+
+    var pn = panel('Numerics');
+    var convName = ['WENO', 'Split central', 'Hybrid WENO-central', 'Upwind (Zhong)'][conv] || shortLabel('RunParam%iConvSchm');
+    item(pn, 'Convection', convName + (order ? ', ' + order + getOrdinal(order) + ' order' : ''), ['RunParam%iConvSchm', 'RunParam%ConvStencil']);
+    if (live('WENOParam%iglobalscheme')) {
+      item(pn, 'WENO', shortLabel('WENOParam%iglobalscheme') + ' · ' + shortLabel('WENOParam%split_method'), ['WENOParam%iglobalscheme', 'WENOParam%split_method']);
+      var azMode = num('WENOParam%adapt_zone_on', 0);
+      var azText = azMode === 0 ? 'global, x/y/z = ' + raw('WENOParam%iadaptx') + '/' + raw('WENOParam%iadapty') + '/' + raw('WENOParam%iadaptz')
+        : azMode === 1 ? 'in zones (' + Math.max(0, num('WENOParam%adapt_zone_num', 0)) + ')'
+        : azMode === 2 ? 'from REST/WENO_adapt_zone.h5' : shortLabel('WENOParam%adapt_zone_on');
+      if (has('WENOParam%adapt_zone_iadapt_freq')) azText += ' · freq = ' + raw('WENOParam%adapt_zone_iadapt_freq');
+      item(pn, 'Adaptation', azText, ['WENOParam%adapt_zone_on', 'WENOParam%adapt_zone_iadapt_freq']);
+      if (azMode === 1) zoneItems(pn, 'WENOParam', 'adapt_zone_');
+    }
+    if (live('HybridParam%ishocksensortype')) {
+      item(pn, 'Shock sensor', shortLabel('HybridParam%ishocksensortype') + ', threshold ' + raw('HybridParam%sensorthresh'), ['HybridParam%ishocksensortype']);
+      if (on('HybridParam%weno_zone_on')) { item(pn, 'WENO zones', String(Math.max(0, num('HybridParam%weno_zone_num', 0))), ['HybridParam%weno_zone_on']); zoneItems(pn, 'HybridParam', 'weno_zone_'); }
+    }
+    item(pn, 'Viscous', on('FlowParam%iviscous') ? shortLabel('FlowParam%iViscSchm') : 'off (Euler)', ['FlowParam%iviscous', 'FlowParam%iViscSchm']);
+    item(pn, 'Time', shortLabel('TemporalParam%ischeme') + ' · ' + (constDt ? '{Δt} = ' + sig(constDt, 3) + ' s' : 'CFL ' + raw('TemporalParam%cfl_conv')) + (ncfl > 1 ? ' (' + ncfl + ' stages)' : ''),
+      ['TemporalParam%ischeme', 'TemporalParam%dt_const']);
+    item(pn, 'Filter', on('FilterParam%iuse') ? 'on, strength ' + raw('FilterParam%filterStrength') : 'off', ['FilterParam%iuse']);
+
+    // ---- turbulence model: what is listed depends on which module is active
+    var les = on('LESParam%iuse'), rans = on('RANSParam%iuse');
+    var pm = panel('Turbulence model · ' + (les && rans ? 'LES + RANS' : les ? 'LES' : rans ? 'RANS' : 'DNS'));
+    if (!les && !rans) item(pm, 'Mode', 'DNS: all scales resolved, no SGS or RANS model', ['LESParam%iuse', 'RANSParam%iuse']);
+    if (rans) {
+      item(pm, 'RANS model', label('RANSParam%imodel') ? shortLabel('RANSParam%imodel') : 'Baldwin-Lomax · imodel = ' + raw('RANSParam%imodel'), ['RANSParam%imodel']);
+      item(pm, 'Active from', 'step ' + raw('RANSParam%nstart') + ' · {Pr|t} = ' + raw('RANSParam%Prt'), ['RANSParam%nstart', 'RANSParam%Prt']);
+      item(pm, 'BL edge', paren(label('RANSParam%iBL')) || 'iBL = ' + raw('RANSParam%iBL'), ['RANSParam%iBL']);
+      if (on('RANSParam%iTV')) item(pm, 'T–V relation', 'on from step ' + raw('RANSParam%TV_nstart'), ['RANSParam%iTV']);
+      var rz = on('RANSParam%zone_on');
+      item(pm, 'Region', rz ? 'mut added only in zones (' + Math.max(0, num('RANSParam%zone_num', 0)) + ')' : 'everywhere', ['RANSParam%zone_on', 'RANSParam%zone_num']);
+      if (rz) zoneItems(pm, 'RANSParam', 'zone_');
+    }
+    if (les) {
+      item(pm, 'SGS model', shortLabel('LESParam%imodel').replace(/^Use\s+/i, ''), ['LESParam%imodel']);
+      item(pm, 'Constants', '{C} = ' + raw('LESParam%const') + ' · {Pr|t} = ' + raw('LESParam%Prt'), ['LESParam%const', 'LESParam%Prt']);
+      if (label('LESParam%idelta')) {
+        var dl = label('LESParam%idelta').replace(/^delta\b/i, '{Δ}').replace(/volume\^\(1\/3\)/i, '{V}¹ᐟ³ (cell volume)')
+          .replace(/\(delta_i, delta_j, delta_k\)/i, '({Δ|i}, {Δ|j}, {Δ|k})');
+        item(pm, 'Filter width', cap(dl), ['LESParam%idelta']);
+      }
+      if (on('LESParam%icomprCorr')) item(pm, 'Compressibility', 'correction on', ['LESParam%icomprCorr']);
+      item(pm, 'Wall model', on('LESParam%iWMLES')
+        ? 'WMLES · interface index ' + raw('LESParam%idx') + ' · {N|p} = ' + raw('LESParam%Np') + ' · {α} = ' + raw('LESParam%alpha')
+        : 'off (wall-resolved)', ['LESParam%iWMLES']);
+    }
+
+    var prn = panel('Run');
+    item(prn, 'Start', nstart === -1 ? 'auto-restart from latest checkpoint' : 'step ' + fmtInt(nstart), ['RunParam%nstart'], nstart < -1 ? 'error' : '');
+    item(prn, 'Length', fmtInt(nstep) + ' steps' + (tphys ? ' = ' + sig(tphys * 1e3, 3) + ' ms' : ''), ['RunParam%nstep']);
+    if (tphys && d0 > 0) item(prn, 'Flow-through', sig(tphys * u / d0, 4) + ' {δ|0}/{u|∞}', ['RunParam%nstep', 'TemporalParam%dt_const']);
+    item(prn, 'Checkpoints', 'every ' + fmtInt(nsr) + ' steps (~' + fmtInt(nsr > 0 ? Math.floor(nstep / nsr) : NaN) + ' files)', ['RunParam%nsaverestartfile'], nsr > 0 ? '' : 'error');
+
+    var pb = panel('Boundary conditions');
+    function pair(lab, a, b, ka, kb) {
+      if (raw(a) === raw(b)) item(pb, lab[0], shortLabel(a), [a, b]);
+      else { item(pb, lab[1], shortLabel(a), [a]); item(pb, lab[2], shortLabel(b), [b]); }
+    }
+    pair(['Inlet / outlet', 'Inlet (i = 1)', 'Outlet (i = imax)'], 'BCParam%inletbc', 'BCParam%ioutletbc');
+    if (num('BCParam%inletbc', 0) !== 0) {
+      var inflow = [];
+      if (on('BCParam%isynthetic')) inflow.push('digital-filter turbulence');
+      if (on('BCParam%irescale')) inflow.push('rescaling');
+      if (inflow.length) item(pb, 'Inflow', inflow.join(' + '), ['BCParam%isynthetic', 'BCParam%irescale']);
+    }
+    pair(['Spanwise', 'Span (j = 1)', 'Span (j = jmax)'], 'BCParam%ispanwisebegbc', 'BCParam%ispanwiseendbc');
+    // "Bottom", not "Wall": in e.g. a nozzle the k = 1 face can be a freestream or symmetry face
+    item(pb, 'Bottom (k = 1)', shortLabel('BCParam%ibotbc') + (bottomIsWall ? ', ' + (iso ? 'isothermal' : 'adiabatic') : ''), ['BCParam%ibotbc', 'BCParam%iadiabaticwall']);
+    item(pb, 'Top (k = kmax)', shortLabel('BCParam%itopbc') + ((topv === 3 || topv === 7) && has('BCParam%sigma_topbc') ? ', {σ} = ' + raw('BCParam%sigma_topbc') : ''), ['BCParam%itopbc']);
+    item(pb, 'Sponges', sp.length ? sp.map(function (x) { return x[0].toLowerCase(); }).join(', ') : 'none', sp.length ? sp.map(function (x) { return 'BCParam%' + x[1]; }) : ['BCParam%inletsponge']);
+    item(pb, 'Forcing', forcing.length ? forcing.map(function (f) { return f[0]; }).join(', ') : 'none', forcing.length ? forcing.map(function (f) { return f[1]; }) : ['BCParam%iwallforce']);
+
+    var po = panel('Output');
+    activeOut.forEach(function (o) { item(po, o.label, o.text, o.keys); });
+    if (!activeOut.length) item(po, 'Savers', 'none active', []);
+    if (off.length) item(po, 'Off', off.length + ' other modules', [], 'muted');
+
+    groups.keyPoints = kp;
+
+    // ---- run type: TDNS (temporal) vs SDNS (spatial)
+    // TDNS = inlet and outlet periodic AND no inflow turbulence generation
+    //        (no digital filter, no rescaling, no unsteady inlet-plane data).
+    // inletdatatype is only read when the inlet is not periodic, so it only counts then.
+    function isPeriodic(k) { var l = label(k); return l ? /periodic/i.test(l) : num(k, -1) === 0; }
+    var inPer = isPeriodic('BCParam%inletbc'), outPer = isPeriodic('BCParam%ioutletbc');
+    var unsteadyInlet = !inPer && /unsteady/i.test(label('BCParam%inletdatatype'));
+    var gen = [];
+    if (on('BCParam%isynthetic')) gen.push('digital-filter inflow (isynthetic)');
+    if (on('BCParam%irescale')) gen.push('rescaling (irescale)');
+    if (unsteadyInlet) gen.push('unsteady inlet planes (inletdatatype = ' + raw('BCParam%inletdatatype') + ')');
+    var temporal = inPer && outPer && !gen.length;
+    // DNS is temporal or spatial; LES and RANS are just LES / RANS.
+    // The code runs one type at a time, so LES + RANS together is invalid (the validator reports it).
+    var simType = les && rans ? 'LES+RANS' : les ? 'LES' : rans ? 'RANS' : 'DNS';
+    if (simType !== 'DNS') {
+      groups.runType = {
+        kind: simType === 'LES+RANS' ? 'LES + RANS' : simType,
+        model: simType === 'LES+RANS' ? 'invalid' : simType,
+        name: simType === 'LES+RANS' ? 'Invalid' : simType === 'LES' ? 'Large-eddy simulation' : 'RANS',
+        why: simType === 'LES+RANS' ? 'LES and RANS are both on; only one type can run at a time'
+          : simType === 'LES' ? shortLabel('LESParam%imodel').replace(/^Use\s+/i, '') + ', C = ' + raw('LESParam%const')
+          : (label('RANSParam%imodel') ? shortLabel('RANSParam%imodel') : 'Baldwin-Lomax') + ', from step ' + raw('RANSParam%nstart'),
+        keys: ['LESParam%iuse', 'RANSParam%iuse']
+      };
+      return groups;
+    }
+    groups.runType = {
+      kind: (temporal ? 'T' : 'S') + 'DNS',
+      model: 'dns',
+      name: (temporal ? 'Temporal ' : 'Spatial ') + 'DNS',
+      why: temporal
+        ? 'inlet & outlet periodic, no inflow turbulence generation'
+        : [!inPer || !outPer ? 'streamwise not periodic (inlet ' + (inPer ? 'periodic' : 'non-periodic') + ', outlet ' + (outPer ? 'periodic' : 'non-periodic') + ')' : null]
+          .concat(gen.length ? ['turbulence generation: ' + gen.join(', ')] : []).filter(Boolean).join(' · '),
+      keys: ['BCParam%inletbc', 'BCParam%ioutletbc', 'BCParam%isynthetic', 'BCParam%irescale', 'BCParam%inletdatatype', 'LESParam%iuse', 'RANSParam%iuse']
+    };
 
     return groups;
 
@@ -305,7 +500,16 @@
     out.push('='.repeat(W));
     out.push('  DNS SIMULATION CONFIGURATION SUMMARY');
     out.push('  Deck: ' + (fileName || 'deck3d.inp') + '   (generated by deckweb, ' + new Date().toISOString().slice(0, 16).replace('T', ' ') + ')');
-    out.push('='.repeat(W), '');
+    if (groups.keyPoints) {
+      out.push('='.repeat(W));
+      if (groups.runType) out.push('  RUN TYPE: ' + groups.runType.kind + ' (' + groups.runType.name + ': ' + groups.runType.why + ')', '');
+      out.push('  KEY POINTS');
+      groups.keyPoints.forEach(function (pn) {
+        out.push('', '  ' + pn.title);
+        pn.items.forEach(function (it) { out.push('    - ' + (it.label + ':') + ' '.repeat(Math.max(1, 16 - it.label.length)) + plainMath(it.text)); });
+      });
+    }
+    out.push('', '='.repeat(W), '  DETAILS', '='.repeat(W), '');
     groups.forEach(function (g, gi) {
       out.push((gi + 1) + '. ' + g.title.toUpperCase());
       out.push('-'.repeat(W));
@@ -323,6 +527,15 @@
     return out.join('\n') + '\n';
   }
 
+  /** "{M|∞} = 4.87" -> "M∞ = 4.87" (plain text, for the .txt export) */
+  function plainMath(s) {
+    return s.replace(/\{([^|}]+)\|([^}]+)\}/g, function (_, v, sub) { return v + (v.length > 1 ? '_' : '') + sub; })
+      .replace(/\{([^}]+)\}/g, '$1');
+  }
+
+  DW.plainMath = plainMath;
   DW.buildSummary = build;
   DW.summaryText = toText;
+  DW.fmtNum = fmtNum;
+  DW.fmtInt = fmtInt;
 })();

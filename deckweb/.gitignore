@@ -1,0 +1,5 @@
+# DNS simulation input decks (local only)
+*.inp
+deck3d.inp
+tests/fixtures/*.inp
+node_modules/
