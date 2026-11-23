@@ -24,7 +24,7 @@ A minimal, fast, and lightweight directory hosting web applications, computation
 | Tool | Status | Link | Description |
 | :--- | :---: | :--- | :--- |
 | **fixBib** | `🟢 Live` | [dhimanroy.github.io/fixBib](https://dhimanroy.github.io/fixBib/) | Browser-based BibTeX verification and formatting tool for academic and aerospace publications (AIAA, JFM, PoF). |
-| **deckweb** | `🟢 Live` | [dhimanroy.github.io/tools/deckweb](https://dhimanroy.github.io/tools/deckweb/) | Interactive editor and visualizer for DNS simulation input decks (`deck3d.inp`) with syntax validation and live diffs. |
+| **deckWeb** | `🟢 Live` | [dhimanroy.github.io/tools/deckWeb](https://dhimanroy.github.io/tools/deckWeb/) | Interactive editor and visualizer for DNS simulation input decks (`deck3d.inp`) with syntax validation and live diffs. |
 | **FlowData CFD Inspector** | `🟡 In Dev` | — | Planar velocity fields, boundary layer statistics, and wake profile inspection from simulation datasets. |
 | **JSON & Payload Lab** | `🔵 Planned` | — | Client-side diagnostic workbench for JSONPath filtering, schema validation, and mock payloads. |
 
@@ -39,7 +39,7 @@ tools/
 │   └── workflows/
 │       ├── crawler.yml            # Autonomous coupon tracking action
 │       └── deploy-site.yml        # GitHub Actions: GitHub Pages deployment
-├── deckweb/                       # Interactive DNS input deck editor & visualizer
+├── deckWeb/                       # Interactive DNS input deck editor & visualizer
 │   ├── index.html
 │   ├── favicon.svg
 │   ├── assets/

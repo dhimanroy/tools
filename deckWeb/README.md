@@ -1,4 +1,4 @@
-# deckweb
+# deckWeb
 
 A local, browser-based editor for `deck3d.inp`, the web counterpart of the `deckcheck` CLI.
 It's plain HTML, CSS and JavaScript, with no build step, no server and no network access.
@@ -45,7 +45,7 @@ Keyboard shortcuts: `/` search · `Ctrl+S` save or download · `Ctrl+O` open · 
 ## Folder layout
 
 ```
-deckweb/
+deckWeb/
 ├── index.html              entry point (open this)
 ├── favicon.svg
 ├── README.md
