@@ -1,5 +1,5 @@
 /*
- * Shared helpers for the deckweb tests.
+ * Shared helpers for the deckWeb tests.
  *
  * The app is plain browser JavaScript that attaches everything to window.DW.
  * For Node tests we fake `window` as the global object and load the same

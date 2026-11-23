@@ -37,9 +37,9 @@ async function open(text, opts) {
   return page;
 }
 async function done(page) { assert.deepEqual(page.errors, [], 'no errors in the page'); await page.context().close(); }
-const deck = (page) => page.evaluate(() => window.deckweb.text());
+const deck = (page) => page.evaluate(() => (window.deckWeb || window.deckweb).text());
 const line = async (page, key) => (await deck(page)).split('\n').find((l) => l.trim().startsWith(key + ' ')).replace(/\s+/g, ' ').trim();
-const sel = (page) => page.evaluate(() => window.deckweb.state.sel);
+const sel = (page) => page.evaluate(() => (window.deckWeb || window.deckweb).state.sel);
 const row = (id) => '.row[data-id="' + id.toLowerCase() + '"]';
 const goto = (page, block) => page.click('.nav-i[data-b="' + block + '"]');
 

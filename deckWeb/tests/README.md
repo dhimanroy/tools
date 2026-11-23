@@ -11,7 +11,7 @@ Two suites, both using Node's built-in test runner (Node 18 or newer).
 
 ## Running
 
-From the `deckweb/` folder:
+From the `deckWeb/` folder:
 
 ```bash
 npm test

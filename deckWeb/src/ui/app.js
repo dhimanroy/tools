@@ -1,4 +1,4 @@
-/* deckweb: UI, state, live preview, file handling. */
+/* deckWeb: UI, state, live preview, file handling. */
 (function () {
   'use strict';
   var DW = window.DW;
@@ -885,7 +885,7 @@
     el.search.disabled = false;
     $('#btn-save').hidden = !S.handle;
     $('[data-act="dormant"]', $('#tools-pop')).classList.toggle('on', S.showDormant);
-    document.title = (n ? '● ' : '') + (S.fileName || 'deck3d.inp') + ' · deckweb';
+    document.title = (n ? '● ' : '') + (S.fileName || 'deck3d.inp') + ' · deckWeb';
   }
 
   el.nav.addEventListener('click', function (e) {
@@ -952,7 +952,7 @@
       el.fileinfo.innerHTML = ''; el.search.disabled = true;
       ['#btn-undo', '#btn-redo', '#btn-download', '#btn-tools', '#btn-preview'].forEach(function (s) { $(s).disabled = true; });
       $('#btn-save').hidden = true;
-      document.title = 'deckweb · deck3d.inp editor';
+      document.title = 'deckWeb · deck3d.inp editor';
       renderResume();
     }
   });
@@ -1092,7 +1092,7 @@
   renderResume();
 
   // exposed for tests / console use
-  window.deckweb = {
+  window.deckWeb = window.deckweb = {
     state: S,
     loadText: function (text, name) { S.fileName = name || 'deck3d.inp'; S.handle = null; S.grid = {}; loadText(text); },
     text: currentText
